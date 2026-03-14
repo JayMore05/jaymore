@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay More | Software Engineer & Tech Consultant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Base Styles & Variables */
+        :root {
+            --primary-color: #00ff88;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --nav-bg: rgba(15, 23, 42, 0.95);
+            --hero-gradient-1: #1e293b;
+            --hero-gradient-2: #0f172a;
+            --footer-bg: #080f1e;
+        }
+
+        /* Light Theme Overrides */
+        .light-theme {
+            --primary-color: #00c060;
+            --bg-dark: #f8fafc;
+            --bg-card: #ffffff;
+            --text-light: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+            --nav-bg: rgba(248, 250, 252, 0.95);
+            --hero-gradient-1: #ffffff;
+            --hero-gradient-2: #f1f5f9;
+            --footer-bg: #e2e8f0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-dark); color: var(--text-light); line-height: 1.6; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 5%; background-color: var(--nav-bg); position: fixed; width: 100%; top: 0; z-index: 1000; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border-color); transition: background-color 0.3s ease, border-color 0.3s ease;}
+        .logo { font-size: 1.8rem; font-weight: bold; cursor: pointer; text-decoration: none; color: var(--text-light); white-space: nowrap; z-index: 1001;}
+        .logo span { color: var(--primary-color); }
+        .nav-links { display: flex; list-style: none; transition: transform 0.3s ease-in-out; align-items: center;}
+        .nav-links li { margin-left: 1.5rem; }
+        .nav-links a { color: var(--text-light); text-decoration: none; font-weight: 500; transition: color 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: var(--primary-color); }
+
+        /* Theme Toggle Button */
+        #theme-toggle { background: transparent; border: none; color: var(--text-light); font-size: 1.4rem; cursor: pointer; transition: color 0.3s; margin-left: 1.5rem; display: flex; align-items: center;}
+        #theme-toggle:hover { color: var(--primary-color); }
+
+        /* Hamburger Icon */
+        .burger { display: none; cursor: pointer; z-index: 1001; }
+        .burger div { width: 25px; height: 3px; background-color: var(--text-light); margin: 5px; transition: all 0.3s ease; }
+
+        /* Hero Section */
+        .hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 5%; background: radial-gradient(circle at center, var(--hero-gradient-1) 0%, var(--hero-gradient-2) 100%); transition: background 0.3s ease;}
+        .hero-content h1 { font-size: 4rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero-content span { color: var(--primary-color); }
+        .hero-content p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem auto; }
+
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.8rem 2rem; background-color: var(--primary-color); color: #0f172a; text-decoration: none; font-weight: bold; border-radius: 5px; transition: transform 0.3s, box-shadow 0.3s; border: 2px solid var(--primary-color); cursor: pointer; }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2); }
+        .btn-outline { background: transparent; color: var(--primary-color); border-color: var(--primary-color); }
+        .btn-outline:hover { background: var(--primary-color); color: #0f172a; }
+
+        /* Layout */
+        .section-padding { padding: 6rem 5%; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 1rem; line-height: 1.3; }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 3rem; font-size: 1.1rem; }
+
+        /* Interactive Solutions Section */
+        .solutions-container { max-width: 1200px; margin: 0 auto; }
+        .solution-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 3rem; }
+        .sol-btn { background: var(--bg-card); color: var(--text-muted); border: 2px solid var(--border-color); padding: 1rem 1.5rem; border-radius: 30px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; }
+        .sol-btn:hover { border-color: var(--primary-color); color: var(--text-light); }
+        .sol-btn.active { background: var(--primary-color); color: #0f172a; border-color: var(--primary-color); box-shadow: 0 5px 15px rgba(0, 255, 136, 0.3); }
+
+        .solution-reveal { display: flex; flex-wrap: wrap; align-items: center; gap: 3rem; background: var(--bg-card); padding: 3rem; border-radius: 15px; border: 1px solid var(--border-color); opacity: 1; transition: opacity 0.4s ease, background-color 0.3s ease; }
+        .solution-reveal.fade { opacity: 0; }
+        
+        .solution-video-box { flex: 1; min-width: 300px; height: 350px; border-radius: 10px; border: 1px solid var(--border-color); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; background-color: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .solution-video-box video { width: 100%; height: 100%; object-fit: cover; }
+
+        .solution-text-box { flex: 1; min-width: 300px; }
+        .solution-text-box h3 { font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); line-height: 1.2;}
+        .solution-text-box p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; line-height: 1.8; }
+        .solution-tag { display: inline-block; background: rgba(0,255,136,0.1); color: var(--primary-color); padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.85rem; margin-bottom: 1rem; font-weight: bold; }
+
+        /* Technical Capabilities Grid */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; justify-content: center; }
+        .service-card { background-color: var(--bg-card); padding: 2rem; border-radius: 10px; text-align: center; transition: transform 0.3s, background-color 0.3s ease; height: 100%; border-top: 3px solid transparent; cursor: pointer; border: 1px solid transparent;}
+        .light-theme .service-card { border-color: var(--border-color); }
+        .service-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 3px solid var(--primary-color); }
+        .service-card i { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .service-card h3 { margin-bottom: 1rem; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .service-card .click-text { display: block; margin-top: 1rem; color: var(--primary-color); font-weight: bold; font-size: 0.9rem; }
+
+        /* Projects & Blog Grids */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .project-card { background-color: var(--bg-card); border-radius: 10px; overflow: hidden; transition: transform 0.3s; border: 1px solid var(--border-color); }
+        .project-card:hover { transform: translateY(-10px); }
+        .project-img { height: 200px; background-size: cover; background-position: center; }
+        .bg-1 { background-color: #3b82f6; } 
+        .project-info { padding: 1.5rem; }
+        .tags span { background: rgba(0, 255, 136, 0.1); color: var(--primary-color); padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; margin-right: 0.5rem; display: inline-block;}
+
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+        .blog-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column;}
+        .blog-card:hover { transform: translateY(-5px); border-color: var(--primary-color); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .blog-content { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1;}
+        .blog-meta { font-size: 0.85rem; color: var(--primary-color); font-weight: bold; margin-bottom: 0.8rem; letter-spacing: 1px;}
+        .blog-title { font-size: 1.4rem; margin-bottom: 1rem; color: var(--text-light); line-height: 1.3; }
+        .blog-excerpt { color: var(--text-muted); font-size: 1rem; margin-bottom: 1.5rem; flex-grow: 1;}
+        .blog-link { color: var(--text-light); text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; transition: color 0.3s; margin-top: auto;}
+        .blog-link:hover { color: var(--primary-color); }
+
+        /* About & Contact */
+        .about-content { max-width: 900px; margin: 0 auto; text-align: center; }
+        .social-grid { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .social-btn { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 2rem; border-radius: 8px; color: white; text-decoration: none; font-weight: bold; font-size: 1rem; transition: transform 0.3s, opacity 0.3s; }
+        .social-btn:hover { transform: translateY(-3px); opacity: 0.9; }
+        .whatsapp { background-color: #25D366; }
+        .email { background-color: #ea4335; }
+        .github { background-color: #333; }
+        .linkedin { background-color: #0077b5; }
+        .phone-btn { background-color: #334155; }
+        footer { text-align: center; padding: 2rem; background-color: var(--footer-bg); color: var(--text-muted); transition: background-color 0.3s ease;}
+
+        /* Dynamic Detail Views System */
+        .hidden { display: none !important; }
+        #service-detail-view { padding-top: 100px; min-height: 100vh; }
+        .service-header { text-align: center; padding: 2rem 5%; }
+        .service-header i { font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem; }
+        .service-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+        .service-header p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+        .examples-container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 2rem 5%; background-color: var(--bg-card); border-radius: 15px; border: 1px solid var(--border-color); }
+        .examples-header { text-align: center; margin-bottom: 2rem; }
+        .examples-header h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+        .examples-header p { color: var(--text-muted); }
+        
+        .examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .example-card { background-color: var(--bg-dark); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--primary-color); cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; border-left: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
+        .example-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); border-top: 3px solid var(--text-light); }
+        .example-card h4 { font-size: 1.2rem; margin-bottom: 0.8rem; color: var(--text-light); }
+        .example-card p { color: var(--text-muted); font-size: 0.95rem; }
+        .click-hint { display: block; margin-top: 1rem; font-size: 0.85rem; color: var(--primary-color); font-weight: bold; }
+
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+        .modal-content { background: var(--bg-card); width: 90%; max-width: 700px; border-radius: 15px; padding: 2rem; position: relative; border: 1px solid var(--primary-color); box-shadow: 0 15px 40px rgba(0,255,136,0.1); max-height: 90vh; overflow-y: auto;}
+        .modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s; z-index: 10;}
+        .modal-close:hover { color: var(--primary-color); }
+        .modal-img-container { width: 100%; height: 280px; background-color: #0f172a; border-radius: 8px; margin-bottom: 1.5rem; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); position: relative;}
+        .modal-title { font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); line-height: 1.2;}
+        .modal-desc { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+        .no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+        .security-badge { text-align: center; font-size: 0.85rem; color: var(--primary-color); margin-top: 1.5rem; }
+
+        .features-container { max-width: 1100px; margin: 0 auto; padding: 0 5% 6rem 5%; }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .feature-item { background-color: var(--bg-card); padding: 1.5rem; border-radius: 8px; border-left: 4px solid var(--border-color); display: flex; align-items: flex-start; gap: 1rem; transition: transform 0.2s; border-top: 1px solid var(--border-color); border-right: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);}
+        .feature-item:hover { transform: translateX(10px); border-left-color: var(--primary-color); }
+        .feature-item i { color: var(--text-muted); font-size: 1.2rem; margin-top: 0.2rem; transition: color 0.3s; }
+        .feature-item:hover i { color: var(--primary-color); }
+
+        /* Chatbot */
+        .chatbot-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+        .chat-toggle { width: 60px; height: 60px; border-radius: 50%; background-color: var(--primary-color); color: #0f172a; border: none; font-size: 1.8rem; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 255, 136, 0.4); transition: transform 0.3s; }
+        .chat-toggle:hover { transform: scale(1.1); }
+        .chatbot-window { display: none; width: 300px; height: 400px; background-color: var(--bg-card); border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); flex-direction: column; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--border-color); }
+        .chat-header { background-color: var(--primary-color); color: #0f172a; padding: 1rem; font-weight: bold; display: flex; justify-content: space-between; align-items: center; }
+        .chat-header i { cursor: pointer; }
+        .chat-body { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1rem; scroll-behavior: smooth; }
+        .bot-message, .user-message { padding: 0.8rem; border-radius: 10px; max-width: 85%; font-size: 0.9rem; margin-bottom: 0.2rem; }
+        .bot-message { background-color: var(--border-color); align-self: flex-start; color: var(--text-light); }
+        .user-message { background-color: var(--primary-color); color: #0f172a; align-self: flex-end; }
+        .chat-footer { display: flex; padding: 0.8rem; background-color: var(--bg-dark); border-top: 1px solid var(--border-color); }
+        .chat-footer input { flex: 1; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 5px; outline: none; background: var(--bg-card); color: var(--text-light); }
+        .chat-footer button { background: var(--primary-color); border: none; color: #0f172a; padding: 0 1rem; margin-left: 0.5rem; border-radius: 5px; cursor: pointer; }
+        .chat-options { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem; align-items: flex-start; padding: 0 0.5rem; }
+        .chat-opt-btn { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 0.6rem 1rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-align: left; width: 100%; }
+        .chat-opt-btn:hover { background: var(--primary-color); color: #0f172a; }
+
+        @media screen and (max-width: 768px) {
+            body { overflow-x: hidden; }
+            .nav-links { position: fixed; right: 0; top: 0; height: 100vh; background-color: var(--nav-bg); display: flex; flex-direction: column; align-items: center; justify-content: center; width: 70%; transform: translateX(100%); box-shadow: -5px 0 15px rgba(0,0,0,0.2); z-index: 1000; }
+            .nav-links li { margin: 1.5rem 0; }
+            .nav-links a { font-size: 1.2rem; }
+            .nav-active { transform: translateX(0%); }
+            .burger { display: block; }
+            .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+            .toggle .line2 { opacity: 0; }
+            .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+            #theme-toggle { margin: 1rem 0 0 0; font-size: 1.8rem;}
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1rem; }
+            h2 { font-size: 2rem; }
+            .section-padding { padding: 4rem 5%; }
+            .solution-buttons { gap: 0.5rem; }
+            .sol-btn { padding: 0.6rem 1rem; font-size: 0.85rem; width: 100%; }
+            .solution-reveal { flex-direction: column; padding: 1.5rem; gap: 1.5rem; text-align: center; }
+            .solution-video-box { width: 100%; height: 200px; min-width: unset; }
+            .solution-text-box h3 { font-size: 1.5rem; }
+            .service-header h1 { font-size: 2rem; }
+            .modal-content { width: 95%; padding: 1.5rem; }
+            .modal-img-container { height: 180px; }
+            .modal-title { font-size: 1.5rem; }
+            .chatbot-container { bottom: 20px; right: 20px; }
+            .chat-toggle { width: 50px; height: 50px; font-size: 1.5rem; }
+            .chatbot-window { width: 280px; height: 380px; right: 0; }
+            .social-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navbar">
+        <a href="#home" class="logo" onclick="showMainView()">Jay<span> More</span></a>
+        
+        <ul class="nav-links" id="nav-links-list">
+            <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
+            <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
+            <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
+            <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
+            <li><a onclick="showMainViewAndScroll('about')">About</a></li>
+            <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
+            <li><button id="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-sun"></i></button></li>
+        </ul>
+        
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <div id="main-view">
+        <header id="home" class="hero">
+            <div class="hero-content">
+                <h1>Building Scalable Digital <span>Solutions</span></h1>
+                <p>From custom web applications and SaaS platforms to secure, AI-driven integrations.</p>
+                <a href="#solutions" class="btn">See What I Build</a>
+            </div>
+        </header>
+
+        <section id="solutions" class="section-padding">
+            <h2>What are you looking to build today?</h2>
+            <p class="section-subtitle">Click a goal below to see how I can help your business.</p>
+            
+            <div class="solutions-container">
+                <div class="solution-buttons">
+                    <button class="sol-btn active" onclick="loadInlineSolution('hotel')"><i class="fas fa-utensils"></i> Hotel & Shop Management</button>
+                    <button class="sol-btn" onclick="loadInlineSolution('ecommerce')"><i class="fas fa-shopping-bag"></i> Sell Products Online</button>
+                    <button class="sol-btn" onclick="loadInlineSolution('portfolio')"><i class="fas fa-briefcase"></i> Personal Portfolio</button>
+                    <button class="sol-btn" onclick="loadInlineSolution('ai')"><i class="fas fa-robot"></i> AI Auto-Replies</button>
+                    <button class="sol-btn" onclick="loadInlineSolution('business')"><i class="fas fa-building"></i> Custom Business Website</button>
+                </div>
+
+                <div class="solution-reveal" id="solution-display">
+                    <div class="solution-video-box">
+                        <video id="sol-video" autoplay loop muted playsinline>
+                            <source src="http://googleusercontent.com/generated_video_content/37265232022258983498" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="solution-text-box">
+                        <span class="solution-tag" id="sol-tag">SaaS Architecture</span>
+                        <h3 id="sol-title">Custom Business Management Dashboards</h3>
+                        <p id="sol-desc">Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.</p>
+                        <a href="https://wa.me/9137435654" target="_blank" class="btn" id="sol-wa"><i class="fab fa-whatsapp"></i> Let's Build This</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="section-padding" style="background-color: var(--bg-card);">
+            <h2>Technical Capabilities</h2>
+            <p class="section-subtitle">Under the hood. The technologies and architectures I use to make it happen.</p>
+            <div class="service-grid">
+                <div class="service-card" onclick="openServiceDetails('fullstack')">
+                    <i class="fas fa-code"></i>
+                    <h3>Full-Stack Dev</h3>
+                    <p>Custom REST APIs, responsive UI/UX, and robust SQL/NoSQL databases.</p>
+                    <span class="click-text">View 10 tech features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('saas')">
+                    <i class="fas fa-cloud"></i>
+                    <h3>SaaS Architecture</h3>
+                    <p>Multi-tenant systems, tiered billing, and secure role-based access control.</p>
+                    <span class="click-text">View 10 tech features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('ecommerce')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-Commerce</h3>
+                    <p>Secure payment gateways (Stripe/Razorpay) and real-time inventory logic.</p>
+                    <span class="click-text">View 10 tech features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('ai')">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Integration</h3>
+                    <p>OpenAI API integrations, custom NLP chatbots, and automated workflows.</p>
+                    <span class="click-text">View 10 tech features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('cybersecurity')">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>OWASP Top 10 prevention, data encryption, and JWT secure endpoints.</p>
+                    <span class="click-text">View 10 tech features &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img bg-1"></div>
+                    <div class="project-info">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.5rem;">AI-Powered SaaS Dashboard</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Analytics dashboard integrating OpenAI's API.</p>
+                        <div class="tags"><span>React</span><span>Node.js</span><span>AI API</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section-padding" style="background-color: var(--bg-card);">
+            <h2>Technical Blog</h2>
+            <p class="section-subtitle">Deep dive articles on software engineering architectures and cybersecurity breakdowns.</p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">SOFTWARE ENGINEERING • 5 MIN READ</div>
+                        <h3 class="blog-title">Architecting Resilient E-Commerce Platforms</h3>
+                        <p class="blog-excerpt">A deep dive into the system design patterns required to handle high-traffic sales events without database bottlenecks.</p>
+                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">CYBERSECURITY • 7 MIN READ</div>
+                        <h3 class="blog-title">Analyzing Common Webhook Vulnerabilities</h3>
+                        <p class="blog-excerpt">Exploring threat vectors in automated chatbot infrastructures and how to secure API gateways against injection attacks.</p>
+                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">AI INTEGRATION • 4 MIN READ</div>
+                        <h3 class="blog-title">Handling Meta's 2026 WhatsApp API Constraints</h3>
+                        <p class="blog-excerpt">How to bypass webhook failures and properly structure system prompts for strict enterprise-level AI chatbot compliance.</p>
+                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2.5rem;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; margin-bottom: 2rem;">
+                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Education</h3>
+                        <p style="margin-bottom: 0.5rem; color: var(--text-light);"><strong>Universal SkillTech University</strong></p>
+                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">B.Tech in Computer Science Engineering<br>2024 - 2028 | Second Year (4th Sem)<br>CGPA: 7.06</p>
+                    </div>
+                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-certificate"></i> Certifications</h3>
+                        <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
+                            <li><i class="fas fa-shield-alt" style="color: var(--primary-color); width: 20px;"></i> Ethical Hacking - Cisco</li>
+                            <li><i class="fab fa-python" style="color: var(--primary-color); width: 20px;"></i> Python Basics - DataCamp</li>
+                            <li><i class="fas fa-brain" style="color: var(--primary-color); width: 20px;"></i> Python with AI - SkillLevel</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <button onclick="openResumeModal()" class="btn btn-outline"><i class="fas fa-file-alt"></i> View Full Resume</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding" style="background-color: var(--bg-card);">
+            <h2>Let's Connect</h2>
+            <p class="section-subtitle">Reach out through any of the platforms below.</p>
+            <div class="social-grid">
+                <a href="tel:+919137435654" class="social-btn phone-btn"><i class="fas fa-phone-alt"></i> Call Me</a>
+                <a href="https://wa.me/9137435654" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="mailto:jaymore2156@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/JayMore05" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="service-detail-view" class="hidden">
+        <div class="service-header">
+            <i id="detail-icon" class="fas fa-cog"></i>
+            <h1 id="detail-title" style="color: var(--text-light);">Service Title</h1>
+            <p id="detail-desc">Service Description</p>
+        </div>
+
+        <div class="examples-container">
+            <div class="examples-header">
+                <h2>Real-World Solutions</h2>
+                <p>Click any example to see how it works for your business.</p>
+            </div>
+            <div class="examples-grid" id="detail-examples-list"></div>
+        </div>
+
+        <div class="features-container">
+            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-light); text-align: center;">Under The Hood (10 Technical Features)</h2>
+            <div class="features-grid" id="detail-features-list"></div>
+            
+            <div style="text-align: center; margin-top: 4rem;">
+                <button onclick="showMainViewAndScroll('tech-stack')" class="btn"><i class="fas fa-arrow-left"></i> Back to Tech Stack</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="example-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <i class="fas fa-times modal-close" onclick="closeExampleModal()"></i>
+            <div class="modal-img-container" id="modal-img"></div>
+            <h3 class="modal-title" id="modal-title">Example Title</h3>
+            <p class="modal-desc" id="modal-desc">Detailed explanation goes here...</p>
+            <a href="#" target="_blank" class="btn" id="modal-wa-btn">Ask about this solution <i class="fab fa-whatsapp"></i></a>
+        </div>
+    </div>
+
+    <div id="resume-modal" class="modal-overlay hidden no-select">
+        <div class="modal-content" style="max-width: 800px; text-align: left;">
+            <i class="fas fa-times modal-close" onclick="closeResumeModal()"></i>
+            <h3 class="modal-title" style="text-align: center; margin-bottom: 0.5rem;">Jay More</h3>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Mumbai, Maharashtra | 9137435654 | jaymore2156@gmail.com</p>
+            
+            <div style="background-color: var(--bg-dark); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); color: var(--text-light); line-height: 1.8; max-height: 50vh; overflow-y: auto;">
+                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Professional Summary</h4>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.</p>
+
+                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Education</h4>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"><strong>B.Tech in Computer Science Engineering</strong><br>Universal SkillTech University (2024-2028)<br>Second Year (4th Semester) | CGPA: 7.06</p>
+
+                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Core Skills</h4>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.95rem;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong>Analytical & Technical:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Python, C (programming fundamentals)</li>
+                            <li>Logical thinking & problem-solving</li>
+                            <li>Basic data handling and analysis</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong>Professional & Consulting:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Research and information gathering</li>
+                            <li>Clear written and verbal communication</li>
+                            <li>Team collaboration and time management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Certifications & Strengths</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                    <li>Ethical Hacking - Cisco (security fundamentals)</li>
+                    <li>Python Basics - DataCamp</li>
+                    <li>Python with AI - SkillLevel</li>
+                    <li>Quick learner with adaptability to structured environments</li>
+                </ul>
+            </div>
+            
+            <div class="security-badge">
+                <i class="fas fa-shield-alt"></i> Screen Capture & Printing Disabled (Browser Level)
+            </div>
+        </div>
+    </div>
+
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chat-header">
+                <span>Jay's Assistant</span>
+                <i class="fas fa-times" id="close-chat"></i>
+            </div>
+            <div class="chat-body" id="chat-body"></div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Or type a message...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-toggle" id="chat-toggle">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Jay More. Built with code and secure architecture.</p>
+    </footer>
+
+    <script>
+        // --- Theme Toggle Logic ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = themeToggleBtn.querySelector('i');
+        const currentTheme = localStorage.getItem('theme');
+
+        if (currentTheme === 'light') {
+            document.body.classList.add('light-theme');
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('light-theme');
+            
+            if (document.body.classList.contains('light-theme')) {
+                localStorage.setItem('theme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        });
+
+        // --- Mobile Hamburger Menu Logic ---
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links-list');
+
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
+
+        const navLinksArr = document.querySelectorAll('.nav-links li a');
+        navLinksArr.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                }
+            });
+        });
+
+        // --- Navbar Scroll Effect ---
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            else navbar.style.boxShadow = 'none';
+        });
+
+        // --- YOUR LOCAL VIDEOS PLAYLIST DATABASE ---
+        const videoLibrary = {
+            hotel: [
+                "assests/videos/hotel/hotel1.mp4"
+                           ],
+            ecommerce: [
+                "assests/videos/ecommerce/ecommerce1.mp4"
+                            ],
+            portfolio: [
+                "assests/videos/portfolio/portfolio1.mp4"
+                           ],
+            ai: [
+                "assests/videos/ai/ai1.mp4"
+                           ],
+            business: [
+                "assests/videos/business/business1.mp4"
+                            ]
+        };
+
+        const inlineSolutionsData = {
+            hotel: { tag: "SaaS Architecture", title: "Custom Business Management Dashboards", desc: "Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.", waMessage: "Hi Jay, I want to build a hotel/shop management system." },
+            ecommerce: { tag: "E-Commerce Ecosystem", title: "High-Conversion Online Stores", desc: "Sell your physical or digital products 24/7. I build blazing-fast online stores complete with size selections, shopping carts, secure payment gateways, and automated email receipts.", waMessage: "Hi Jay, I want to build an online store." },
+            portfolio: { tag: "Full-Stack Web App", title: "Standout Personal Portfolios", desc: "Get hired faster with a digital resume. Showcase your past work in a beautiful gallery, allow recruiters to download your CV, and receive direct emails via a custom contact form.", waMessage: "Hi Jay, I want to build a personal portfolio." },
+            ai: { tag: "AI & Chatbots", title: "Automated AI Customer Support", desc: "Train an AI on your company's rules. When customers message your website at 2 AM, the AI automatically answers their questions and takes their orders.", waMessage: "Hi Jay, I want to integrate AI." },
+            business: { tag: "Corporate Web Design", title: "Professional Corporate Websites", desc: "Establish trust with a high-speed, SEO-optimized landing page. Capture client leads, explain your company vision, and integrate booking calendars.", waMessage: "Hi Jay, I want to build a business website." }
+        };
+
+        const deepDiveData = {
+            fullstack: {
+                title: "Full-Stack Websites", icon: "fa-code", desc: "Complete custom websites built from scratch to represent your brand and handle your data.",
+                examples: [
+                    { title: "Personal Portfolios", desc: "Sleek, responsive sites to showcase work.", detailedDesc: "A digital resume/portfolio perfect for freelancers, artists, and job seekers. It features a fast-loading gallery of your past projects, a downloadable resume button, and a contact form." },
+                    { title: "Service Booking Sites", desc: "Websites where clients can book appointments.", detailedDesc: "Ideal for clinics, salons, or consultants. Customers view your available time slots on a calendar UI and book themselves. The backend prevents double-booking." },
+                    { title: "Corporate Landing Pages", desc: "High-speed websites for businesses.", detailedDesc: "A multi-page corporate site designed to convert visitors into clients. Features SEO optimization, clear call-to-actions, and newsletter sign-up integrations." },
+                    { title: "Real Estate Listings", desc: "Dynamic properties portal with search.", detailedDesc: "A property management site where realtors can upload new houses via an admin panel. Visitors can filter homes by price, location, and bedrooms." },
+                    { title: "Educational Portals", desc: "E-learning platforms for courses.", detailedDesc: "A custom platform for teachers to upload video lessons, provide PDF notes, and track student progress. Students get personal dashboards." }
+                ],
+                items: ["Custom RESTful API Development", "Responsive Mobile-First UI/UX Design", "Robust Database Architecture", "Progressive Web App (PWA)", "Real-Time Data Syncing", "CMS Integrations", "Performance Optimization", "Legacy Code Refactoring", "Cloud Deployment", "Version Control CI/CD"]
+            },
+            saas: {
+                title: "SaaS Architecture", icon: "fa-cloud", desc: "Powerful software platforms that run in the cloud, allowing multiple users to manage their business.",
+                examples: [
+                    { title: "Hotel/Restaurant Management", desc: "Dashboard to track orders and bills.", detailedDesc: "A POS and management system. Waiters input table orders via tablets, instantly appearing on a kitchen display. Managers view daily profits on an admin dashboard." },
+                    { title: "Employee HR Portals", desc: "Internal software to track attendance.", detailedDesc: "A centralized cloud application for businesses to manage their workforce. Employees clock hours, HR automatically calculates monthly payrolls." },
+                    { title: "Gym & Class Subscriptions", desc: "Manage recurring payments.", detailedDesc: "Gym owners track memberships while members log in to book fitness classes. The software handles automatic monthly credit card billing." },
+                    { title: "Invoicing & Accounting", desc: "Generate bills and track expenses.", detailedDesc: "A B2B SaaS tool to create professional invoices, send them to clients, track payments, and scan receipts to log business expenses." },
+                    { title: "CRM (Customer Relations)", desc: "Track sales leads and communication.", detailedDesc: "Sales teams track leads through a drag-and-drop pipeline, schedule follow-up reminders, and store client contact histories securely." }
+                ],
+                items: ["Multi-Tenant Architecture", "Tiered Subscription Billing", "Secure User Authentication", "Admin Dashboards", "Automated User Onboarding", "API Rate Limiting", "Data Isolation", "Automated Daily Backups", "Third-Party Integrations", "High-Availability Load Balancing"]
+            },
+            ecommerce: {
+                title: "E-Commerce Ecosystems", icon: "fa-shopping-cart", desc: "Custom online stores designed to make buying easy and inventory tracking simple.",
+                examples: [
+                    { title: "Clothing Boutiques", desc: "Visual storefront with categorized clothing.", detailedDesc: "A mobile-friendly shop featuring high-quality image zoom, color/size variant selection, and a smooth cart system that remembers items." },
+                    { title: "Digital Product Hubs", desc: "Secure platform to sell software.", detailedDesc: "Optimized for instant downloads. The system automatically generates a secure, expiring download link sent to the customer's email, preventing piracy." },
+                    { title: "Local Grocery Delivery", desc: "App to order groceries online.", detailedDesc: "Calculates delivery fees based on distance. Includes real-time inventory—if someone buys the last apple, it immediately says 'Out of Stock'." },
+                    { title: "Subscription Boxes", desc: "Automated monthly recurring orders.", detailedDesc: "Customers sign up once to receive a box every month. The system automatically bills their card and generates a shipping label for the warehouse." },
+                    { title: "Multi-Vendor Marketplaces", desc: "A site where others sell on your platform.", detailedDesc: "Independent sellers create accounts, upload products, and manage sales. You automatically take a commission cut from every transaction via Stripe." }
+                ],
+                items: ["Secure Payment Gateways", "Real-Time Inventory Tracking", "Advanced Search & Filters", "Dynamic Promo Code Logic", "Abandoned Cart Recovery", "Customer Wishlists", "Automated Order Tracking", "Frictionless Checkout", "Dropshipping Integrations", "Technical SEO"]
+            },
+            ai: {
+                title: "AI & Chatbot Integration", icon: "fa-robot", desc: "Smart automation tools that act like digital employees, working 24/7.",
+                examples: [
+                    { title: "WhatsApp Ordering Bots", desc: "AI takes food orders via WhatsApp.", detailedDesc: "Customers message your business on WhatsApp. The AI greets them, shows the menu, takes their order, calculates the total, and sends it to the kitchen." },
+                    { title: "24/7 Customer Support", desc: "Widget trained on company FAQs.", detailedDesc: "When a user asks a specific question on your website at 3 AM, the bot reads your manuals and gives a perfect, conversational answer instantly." },
+                    { title: "Automated Lead Generators", desc: "AI qualifies potential sales leads.", detailedDesc: "When a user fills out a contact form, the AI researches their company, drafts a personalized introductory email, and saves it in your drafts." },
+                    { title: "Resume Screening Bots", desc: "AI helps HR sort applications.", detailedDesc: "Reads uploaded PDFs, extracts relevant skills, scores the candidate against the job description, and creates a shortlist for human review." },
+                    { title: "Content & SEO Assistants", desc: "Internal tools to generate marketing copy.", detailedDesc: "A private dashboard. Type in a product name, and the AI generates Instagram captions, a blog outline, and SEO-optimized website descriptions." }
+                ],
+                items: ["OpenAI API Integration", "Natural Language Processing", "Automated Support Agents", "AI Lead Generation", "Sentiment Analysis", "Context-Aware Memory", "Vector Databases", "Text-to-Speech", "Automated Data Extraction", "Custom AI Dashboards"]
+            },
+            cybersecurity: {
+                title: "Cybersecurity First", icon: "fa-shield-alt", desc: "Protecting your website and sensitive information from hackers and data leaks.",
+                examples: [
+                    { title: "Payment Data Protection", desc: "Ensuring credit cards are unstealable.", detailedDesc: "Strict PCI-DSS compliance. Payment data is tokenized and encrypted before leaving the user's browser, meaning hackers get zero credit card numbers." },
+                    { title: "Medical/Client Privacy", desc: "Securing portals with sensitive files.", detailedDesc: "HIPAA-compliant database architectures. Patient data is encrypted, and access logs track exactly which employee viewed which file." },
+                    { title: "Spam & Bot Prevention", desc: "Stopping fake accounts and bots.", detailedDesc: "Implementation of invisible reCAPTCHA and behavioral analysis to ensure only real humans can create accounts or submit forms." },
+                    { title: "Secure File Sharing", desc: "Encrypted internal document transfers.", detailedDesc: "A portal where sensitive files are encrypted. Employees generate self-destructing download links to safely share files with contractors." },
+                    { title: "Vulnerability Audits", desc: "Testing systems for weaknesses.", detailedDesc: "We act as ethical hackers, running penetration tests to find outdated code, SQL injection points, and weak passwords before real hackers do." }
+                ],
+                items: ["OWASP Top 10 Prevention", "Data Encryption (At Rest/Transit)", "Two-Factor Authentication (2FA)", "XSS Protection", "SQL Injection Defense", "SSL/TLS Implementation", "Role-Based Access Control", "DDoS Mitigation", "Secure API Authentication", "Automated Patching"]
+            }
+        };
+
+        // --- Logic for Views & Modals ---
+        function loadInlineSolution(key) {
+            document.querySelectorAll('.sol-btn').forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            const displayBox = document.getElementById('solution-display');
+            displayBox.classList.add('fade');
+            
+            setTimeout(() => {
+                const data = inlineSolutionsData[key];
+                document.getElementById('sol-tag').textContent = data.tag;
+                document.getElementById('sol-title').textContent = data.title;
+                document.getElementById('sol-desc').textContent = data.desc;
+                
+                const vids = videoLibrary[key];
+                const randomVid = vids[Math.floor(Math.random() * vids.length)];
+                
+                const videoElement = document.getElementById('sol-video');
+                videoElement.src = randomVid; 
+                videoElement.load();
+                videoElement.play();
+                
+                document.getElementById('sol-wa').href = `https://wa.me/9137435654?text=${encodeURIComponent(data.waMessage)}`;
+                displayBox.classList.remove('fade');
+            }, 300);
+        }
+
+        const mainView = document.getElementById('main-view');
+        const detailView = document.getElementById('service-detail-view');
+
+        function openServiceDetails(serviceId) {
+            const data = deepDiveData[serviceId];
+            if (!data) return;
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-desc').textContent = data.desc;
+            document.getElementById('detail-icon').className = `fas ${data.icon}`;
+            const examplesList = document.getElementById('detail-examples-list');
+            examplesList.innerHTML = '';
+            data.examples.forEach((ex, index) => {
+                const div = document.createElement('div');
+                div.className = 'example-card';
+                div.onclick = () => openExampleModal(serviceId, index);
+                div.innerHTML = `<h4>${ex.title}</h4><p>${ex.desc}</p><span class="click-hint"><i class="fas fa-play-circle"></i> View Details</span>`;
+                examplesList.appendChild(div);
+            });
+            const featuresList = document.getElementById('detail-features-list');
+            featuresList.innerHTML = ''; 
+            data.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'feature-item';
+                div.innerHTML = `<i class="fas fa-check"></i> <span>${item}</span>`;
+                featuresList.appendChild(div);
+            });
+            mainView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showMainView() { detailView.classList.add('hidden'); mainView.classList.remove('hidden'); }
+        function showMainViewAndScroll(sectionId) { 
+            showMainView(); 
+            if (nav.classList.contains('nav-active')) {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+            }
+            setTimeout(() => { document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' }); }, 50); 
+        }
+
+        // Modal Logic
+        function openExampleModal(serviceId, exampleIndex) {
+            const ex = deepDiveData[serviceId].examples[exampleIndex];
+            document.getElementById('modal-title').textContent = ex.title;
+            document.getElementById('modal-desc').textContent = ex.detailedDesc;
+            document.getElementById('modal-img').style.backgroundImage = `url('https://placehold.co/800x400/1e293b/00ff88?text=${encodeURIComponent(ex.title.split(' ')[0] + " Demo")}')`;
+            
+            const waText = encodeURIComponent(`Hi Jay, I am interested in building a solution like: ${ex.title}`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/9137435654?text=${waText}`;
+
+            document.getElementById('example-modal').classList.remove('hidden');
+        }
+        function closeExampleModal() { document.getElementById('example-modal').classList.add('hidden'); }
+        document.getElementById('example-modal').addEventListener('click', function(e) { if (e.target === this) closeExampleModal(); });
+
+        // --- PROTECTED RESUME LOGIC ---
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+            document.addEventListener('contextmenu', blockContext);
+            document.addEventListener('keydown', blockKeys);
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+            document.removeEventListener('contextmenu', blockContext);
+            document.removeEventListener('keydown', blockKeys);
+        }
+
+        function blockContext(e) { e.preventDefault(); }
+
+        function blockKeys(e) {
+            if (e.key === 'PrintScreen' || 
+               (e.ctrlKey && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'P' || e.key === 'S' || e.key === 'C')) ||
+               (e.metaKey && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'P' || e.key === 'S' || e.key === 'C' || e.shiftKey))) {
+                e.preventDefault();
+                alert("Screenshots and printing are disabled for this document.");
+            }
+        }
+
+      // --- DIAGNOSTIC CONSULTANT CHATBOT LOGIC (MULTI-STEP FLOW) ---
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const closeChat = document.getElementById('close-chat');
+        const sendBtn = document.getElementById('send-btn');
+        const chatInput = document.getElementById('chat-input');
+        const chatBody = document.getElementById('chat-body');
+        let chatInitialized = false;
+
+        chatToggle.addEventListener('click', () => { 
+            chatbotWindow.style.display = 'flex'; 
+            chatToggle.style.display = 'none'; 
+            if (!chatInitialized) {
+                startDiagnosticFlow();
+                chatInitialized = true;
+            }
+        });
+        
+        closeChat.addEventListener('click', () => { 
+            chatbotWindow.style.display = 'none'; 
+            chatToggle.style.display = 'block'; 
+        });
+
+        // STEP 1: Greeting & Tech Stack
+        function startDiagnosticFlow() {
+            addMessageToChat('bot-message', "Hi! I'm Jay's assistant. To help point you in the right direction, which technical capability are you looking for?");
+            
+            setTimeout(() => {
+                showOptions([
+                    { text: "Full-Stack Dev", action: "fullstack", step: 1 },
+                    { text: "SaaS Architecture", action: "saas", step: 1 },
+                    { text: "E-Commerce", action: "ecommerce", step: 1 },
+                    { text: "AI Integration", action: "ai", step: 1 },
+                    { text: "Cybersecurity", action: "cybersecurity", step: 1 }
+                ]);
+            }, 500);
+        }
+
+        // Dynamic Options Renderer
+        function showOptions(options) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chat-options';
+            optionsDiv.id = 'current-options';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-opt-btn';
+                btn.innerHTML = `<i class="fas fa-arrow-right"></i> ${opt.text}`;
+                // Pass the text, action string, current step, and parent category (if any)
+                btn.onclick = () => handleOptionSelection(opt.text, opt.action, opt.step, opt.parentCategory);
+                optionsDiv.appendChild(btn);
+            });
+            chatBody.appendChild(optionsDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        // Logic Handler for Clicks
+        function handleOptionSelection(userText, actionType, step, parentCategory) {
+            const currentOptions = document.getElementById('current-options');
+            if (currentOptions) currentOptions.remove();
+
+            addMessageToChat('user-message', userText);
+
+            const typingMsg = document.createElement('div');
+            typingMsg.classList.add('bot-message');
+            typingMsg.textContent = "Typing...";
+            chatBody.appendChild(typingMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                chatBody.removeChild(typingMsg);
+                
+                // STEP 2: Render Real-World Solutions based on chosen Tech Stack
+                if (step === 1) {
+                    // Fetch the data from your deepDiveData object based on the category clicked
+                    const categoryData = deepDiveData[actionType];
+                    
+                    addMessageToChat('bot-message', `Great! Jay has built several solutions using ${categoryData.title}. Which of these real-world examples interests you the most?`);
+
+                    setTimeout(() => {
+                        // Map the specific examples into new button options
+                        const nextOptions = categoryData.examples.map(ex => ({
+                            text: ex.title,
+                            action: "connect",
+                            step: 2,
+                            parentCategory: categoryData.title
+                        }));
+                        showOptions(nextOptions);
+                    }, 500);
+                } 
+                // STEP 3: Final Connect with Jay CTA
+                else if (step === 2) {
+                    addMessageToChat('bot-message', `Excellent choice! A ${userText} solution is highly effective. Let's connect you directly with Jay to discuss building it.`);
+
+                    setTimeout(() => {
+                        // Generate dynamic WhatsApp link
+                        const waText = encodeURIComponent(`Hi Jay, I am interested in your ${parentCategory} services, specifically building: ${userText}`);
+                        const waLink = `https://wa.me/9137435654?text=${waText}`;
+
+                        const waBtnDiv = document.createElement('div');
+                        waBtnDiv.className = 'chat-options';
+                        waBtnDiv.innerHTML = `<a href="${waLink}" target="_blank" class="chat-opt-btn" style="background:var(--primary-color); color:#0f172a; font-weight:bold; text-align:center; display:block; width: 100%;"><i class="fab fa-whatsapp"></i> Chat with Jay on WhatsApp</a>`;
+                        chatBody.appendChild(waBtnDiv);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    }, 800);
+                }
+
+            }, 1000);
+        }
+
+        // Handle Manual Typing Fallback
+        sendBtn.addEventListener('click', handleManualMessage);
+        chatInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') handleManualMessage(); });
+
+        function handleManualMessage() {
+            const text = chatInput.value.trim();
+            if (text === "") return;
+            addMessageToChat('user-message', text);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                addMessageToChat('bot-message', "I'm a guided assistant right now! For detailed technical answers, please select an option above or click the WhatsApp link to chat directly with Jay.");
+            }, 500);
+        }
+
+        // Utility to inject messages
+        function addMessageToChat(className, messageText) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add(className);
+            msgDiv.textContent = messageText;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+    </script>
+</body>
+</html>
