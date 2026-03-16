@@ -39,7 +39,7 @@
   --footer-bg: #020617;
 }
 
-/* Light Theme Overrides (currently unused but kept if needed later) */
+/* Light Theme Overrides */
 .light-theme {
   --primary-color: #0ea5e9;
   --accent-color: #8b5cf6;
@@ -71,7 +71,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   transition: background-color 0.4s ease, color 0.4s ease;
-  perspective: 1200px;
+  /* Removed perspective here to fix the Chatbot floating issue */
 }
 
 /* Navigation */
@@ -101,6 +101,11 @@ nav {
 }
 .logo span { color: var(--primary-color); }
 
+/* --- LOGO FIX: Hides the logo when detail view is open --- */
+#navbar.hide-logo .logo {
+  display: none !important;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -122,7 +127,7 @@ nav {
   text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
 }
 
-/* (No theme toggle button in markup; #theme-toggle styles left in case you re-add later) */
+/* Theme Toggle Button */
 #theme-toggle {
   background: transparent;
   border: none;
@@ -402,7 +407,6 @@ h2 {
     rgba(15, 23, 42, 0.96));
 }
 
-/* Keep previous structure-specific styles */
 .service-card {
   padding: 2rem;
   text-align: center;
@@ -539,7 +543,19 @@ footer {
 /* Dynamic Detail Views System */
 .hidden { display: none !important; }
 
+/* REPLACED: Changed padding-top from 100px to 160px so the icon clears the navbar fully */
+#service-detail-view { padding-top: 160px; min-height: 100vh; }
+.service-header { text-align: center; padding: 2rem 5%; }
+.service-header i { font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem; }
+.service-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+.service-header p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
 /* Examples & Features spacing tweaks */
+.examples-container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 2rem 5%; background-color: var(--bg-card); border-radius: 15px; border: 1px solid var(--border-color); }
+.examples-header { text-align: center; margin-bottom: 2rem; }
+.examples-header h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color); }
+.examples-header p { color: var(--text-muted); }
+
 .examples-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -562,6 +578,17 @@ footer {
   color: var(--primary-color);
   font-weight: bold;
 }
+
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
+.modal-content { background: var(--bg-card); width: 90%; max-width: 700px; border-radius: 15px; padding: 2rem; position: relative; border: 1px solid var(--primary-color); box-shadow: 0 15px 40px rgba(0,255,136,0.1); max-height: 90vh; overflow-y: auto;}
+.modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s; z-index: 10;}
+.modal-close:hover { color: var(--primary-color); }
+.modal-img-container { width: 100%; height: 280px; background-color: #0f172a; border-radius: 8px; margin-bottom: 1.5rem; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); position: relative;}
+.modal-title { font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); line-height: 1.2;}
+.modal-desc { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; }
+
+.no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.security-badge { text-align: center; font-size: 0.85rem; color: var(--primary-color); margin-top: 1.5rem; }
 
 /* Features */
 .features-container {
@@ -663,6 +690,12 @@ footer {
   color: #020617;
   align-self: flex-end;
 }
+.chat-footer { display: flex; padding: 0.8rem; background-color: var(--bg-dark); border-top: 1px solid var(--border-color); }
+.chat-footer input { flex: 1; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 5px; outline: none; background: var(--bg-card); color: var(--text-light); }
+.chat-footer button { background: var(--primary-color); border: none; color: #0f172a; padding: 0 1rem; margin-left: 0.5rem; border-radius: 5px; cursor: pointer; }
+.chat-options { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem; align-items: flex-start; padding: 0 0.5rem; }
+.chat-opt-btn { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 0.6rem 1rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-align: left; width: 100%; }
+.chat-opt-btn:hover { background: var(--primary-color); color: #0f172a; }
 
 /* Loader (JS is safe even if loader div is missing) */
 #loader {
@@ -775,18 +808,17 @@ footer {
 </style>
 </head>
 <body>
-    <nav id="navbar">
+        <nav id="navbar">
         <a href="#home" class="logo" onclick="showMainView()">Jay<span> More</span></a>
         
-        <ul class="nav-links" id="nav-links-list">
-            <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
-            <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
-            <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
-            <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
-            <li><a onclick="showMainViewAndScroll('about')">About</a></li>
-            <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
-        </ul>
-        
+       <ul class="nav-links" id="nav-links-list">
+    <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
+    <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
+    <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
+    <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
+    <li><a onclick="showMainViewAndScroll('about')">About</a></li>
+    <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
+   </ul>        
         <div class="burger" id="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -1055,20 +1087,22 @@ footer {
         <p>&copy; 2026 Jay More. Built with code and secure architecture.</p>
     </footer>
 
-    <!-- Smooth Scroll -->
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
 
-    <!-- Card Tilt -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
 
-    <!-- Scroll Animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-    <!-- Cursor -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
     <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
 
     <script>
+        
+
         // --- Mobile Hamburger Menu Logic ---
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links-list');
@@ -1211,53 +1245,42 @@ footer {
             }, 300);
         }
 
-       function openServiceDetails(serviceId) {
-    const data = deepDiveData[serviceId];
-    if (!data) return;
+        function openServiceDetails(serviceId) {
+            const data = deepDiveData[serviceId];
+            if (!data) return;
+            
+            // --- LOGO FIX IN JAVASCRIPT ---
+            document.getElementById('navbar').classList.add('hide-logo');
+            
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-desc').textContent = data.desc;
+            document.getElementById('detail-icon').className = `fas ${data.icon}`;
+            const examplesList = document.getElementById('detail-examples-list');
+            examplesList.innerHTML = '';
+            data.examples.forEach((ex, index) => {
+                const div = document.createElement('div');
+                div.className = 'example-card';
+                div.onclick = () => openExampleModal(serviceId, index);
+                div.innerHTML = `<h4>${ex.title}</h4><p>${ex.desc}</p><span class="click-hint"><i class="fas fa-play-circle"></i> View Details</span>`;
+                examplesList.appendChild(div);
+            });
+            const featuresList = document.getElementById('detail-features-list');
+            featuresList.innerHTML = ''; 
+            data.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'feature-item';
+                div.innerHTML = `<i class="fas fa-check"></i> <span>${item}</span>`;
+                featuresList.appendChild(div);
+            });
+            mainView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
 
-    document.getElementById('detail-title').textContent = data.title;
-    document.getElementById('detail-desc').textContent = data.desc;
-    document.getElementById('detail-icon').className = `fas ${data.icon}`;
-
-    const examplesList = document.getElementById('detail-examples-list');
-    examplesList.innerHTML = '';
-
-    data.examples.forEach((ex) => {
-        const div = document.createElement('div');
-        div.className = 'example-card';
-
-        const waText = encodeURIComponent(
-            `Hi Jay, I am interested in building a solution like: ${ex.title}`
-        );
-        const waLink = `https://wa.me/9137435654?text=${waText}`;
-
-        div.innerHTML = `
-            <h4>${ex.title}</h4>
-            <p>${ex.desc}</p>
-            <span class="click-hint">
-              <a href="${waLink}" target="_blank" class="btn btn-outline" style="margin-top:0.8rem; padding:0.45rem 1rem; font-size:0.85rem;">
-                View Details <i class="fab fa-whatsapp"></i>
-              </a>
-            </span>
-        `;
-
-        examplesList.appendChild(div);
-    });
-
-    const featuresList = document.getElementById('detail-features-list');
-    featuresList.innerHTML = ''; 
-    data.items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'feature-item';
-        div.innerHTML = `<i class="fas fa-check"></i> <span>${item}</span>`;
-        featuresList.appendChild(div);
-    });
-
-    mainView.classList.add('hidden');
-    detailView.classList.remove('hidden');
-    window.scrollTo(0, 0);
-}
         function showMainView() {
+            // --- LOGO RESTORE IN JAVASCRIPT ---
+            document.getElementById('navbar').classList.remove('hide-logo');
+            
             detailView.classList.add('hidden');
             mainView.classList.remove('hidden');
         }
