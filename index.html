@@ -14,64 +14,56 @@
     <meta property="og:description" content="Explore my projects in E-commerce, AI, and Software Engineering.">
     <meta property="og:image" content="https://jaymore.vercel.app/assests/images/portfolio-preview.jpg">
 
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://jaymore.vercel.app/">
-    <meta property="twitter:title" content="Jay More | Software Engineer Portfolio">
-    <meta property="twitter:description" content="B.Tech CSE Student & Tech Consultant based in Mumbai.">
-    <meta property="twitter:image" content="https://jaymore.vercel.app/assests/images/portfolio-preview.jpg">
-
-    <link rel="stylesheet" href="style.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 
 <style>
-/* Base Styles & Variables */
+/* Base Styles & Modern Variables */
 :root {
-  --primary-color: #22d3ee;       /* cyan */
-  --accent-color: #a855f7;        /* purple accent */
-  --bg-dark: #020617;             /* main background */
-  --bg-card: rgba(15, 23, 42, 0.9);
-  --text-light: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border-color: rgba(148, 163, 184, 0.35);
-  --nav-bg: rgba(15, 23, 42, 0.92);
-  --hero-gradient-1: #020617;
-  --hero-gradient-2: #020617;
-  --footer-bg: #020617;
-}
-
-/* Light Theme Overrides */
-.light-theme {
-  --primary-color: #0ea5e9;
-  --accent-color: #8b5cf6;
-  --bg-dark: #f8fafc;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --text-light: #020617;
-  --text-muted: #4b5563;
-  --border-color: rgba(148, 163, 184, 0.4);
-  --nav-bg: rgba(248, 250, 252, 0.95);
-  --hero-gradient-1: #eff6ff;
-  --hero-gradient-2: #e0f2fe;
-  --footer-bg: #e5e7eb;
+  --primary-color: #ffffff;       
+  --accent-color: #a1a1aa;        
+  --bg-dark: #000000;             
+  --bg-card: rgba(255, 255, 255, 0.03); 
+  --text-light: #ffffff;
+  --text-muted: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(0, 0, 0, 0.7);
+  --footer-bg: #000000;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   scroll-behavior: smooth;
 }
 
 body {
-  background:
-    radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
-    radial-gradient(circle at 90% 100%, rgba(168, 85, 247, 0.22), transparent 60%),
-    linear-gradient(to bottom, #020617, #000000 60%);
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.04), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.04), transparent 25%);
   color: var(--text-light);
   line-height: 1.6;
   overflow-x: hidden;
-  transition: background-color 0.4s ease, color 0.4s ease;
-  /* Removed perspective here to fix the Chatbot floating issue */
+  letter-spacing: -0.01em;
+}
+
+/* Typography Upgrades */
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Navigation */
@@ -79,80 +71,57 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.25rem 5%;
+  padding: 1rem 5%;
   background-color: var(--nav-bg);
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.4s ease, border-color 0.4s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .logo {
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   cursor: pointer;
   text-decoration: none;
   color: var(--text-light);
-  white-space: nowrap;
+  letter-spacing: -0.05em;
   z-index: 1001;
 }
-.logo span { color: var(--primary-color); }
+.logo span { color: var(--text-muted); }
 
-/* --- LOGO FIX: Hides the logo when detail view is open --- */
-#navbar.hide-logo .logo {
-  display: none !important;
-}
+#navbar.hide-logo .logo { display: none !important; }
 
 .nav-links {
   display: flex;
   list-style: none;
-  transition: transform 0.3s ease-in-out;
   align-items: center;
 }
-.nav-links li { margin-left: 1.5rem; }
+.nav-links li { margin-left: 2rem; }
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
-  letter-spacing: 0.03em;
-  transition: color 0.25s ease, text-shadow 0.25s ease;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
   cursor: pointer;
 }
 .nav-links a:hover {
-  color: var(--primary-color);
-  text-shadow: 0 0 12px rgba(34, 211, 238, 0.7);
-}
-
-/* Theme Toggle Button */
-#theme-toggle {
-  background: transparent;
-  border: none;
   color: var(--text-light);
-  font-size: 1.4rem;
-  cursor: pointer;
-  transition: color 0.25s ease, transform 0.25s ease;
-  margin-left: 1.5rem;
-  display: flex;
-  align-items: center;
-}
-#theme-toggle:hover {
-  color: var(--primary-color);
-  transform: translateY(-1px);
 }
 
-/* Hamburger Icon */
 .burger {
   display: none;
   cursor: pointer;
   z-index: 1001;
 }
 .burger div {
-  width: 25px;
-  height: 3px;
+  width: 24px;
+  height: 2px;
   background-color: var(--text-light);
   margin: 5px;
   transition: all 0.3s ease;
@@ -166,156 +135,115 @@ nav {
   justify-content: center;
   text-align: center;
   padding: 0 5%;
-  background: transparent;
   position: relative;
-  overflow: hidden;
-}
-
-/* Glowing background blobs */
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  width: 460px;
-  height: 460px;
-  border-radius: 50%;
-  filter: blur(40px);
-  opacity: 0.42;
-  z-index: -1;
-}
-.hero::before {
-  top: -150px;
-  left: -170px;
-  background:
-    radial-gradient(circle at 30% 30%, rgba(56, 189, 248, 0.95), transparent 60%);
-}
-.hero::after {
-  bottom: -170px;
-  right: -140px;
-  background:
-    radial-gradient(circle at 70% 70%, rgba(168, 85, 247, 0.95), transparent 55%);
 }
 
 .hero-content h1 {
-  font-size: 3.6rem;
-  margin-bottom: 1rem;
-  line-height: 1.15;
-  text-shadow:
-    0 0 18px rgba(34, 211, 238, 0.85),
-    0 0 40px rgba(59, 130, 246, 0.7);
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.hero-content span { color: var(--primary-color); }
+.hero-content span { 
+  background: linear-gradient(90deg, #fff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 .hero-content p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   max-width: 600px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2.5rem auto;
+  font-weight: 400;
 }
 
-/* Buttons */
+/* High-Contrast Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 2.3rem;
-  background: linear-gradient(135deg, #22d3ee, #a855f7);
-  color: #020617;
+  padding: 0.8rem 2rem;
+  background: var(--text-light);
+  color: #000000;
   text-decoration: none;
   font-weight: 600;
-  border-radius: 999px;
+  font-size: 0.95rem;
+  border-radius: 99px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(34, 211, 238, 0.35);
-  transform: translate3d(0, 0, 0);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 .btn:hover {
-  transform: translate3d(0, -4px, 12px) scale(1.03);
-  filter: brightness(1.05);
-  box-shadow: 0 14px 30px rgba(34, 211, 238, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  background: #e4e4e7;
 }
 .btn-outline {
   background: transparent;
-  border: 1px solid rgba(148, 163, 184, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: var(--text-light);
   box-shadow: none;
 }
 .btn-outline:hover {
-  background: rgba(15, 23, 42, 0.95);
-  border-color: var(--primary-color);
-  box-shadow:
-    0 10px 30px rgba(15, 23, 42, 0.9),
-    0 0 20px rgba(34, 211, 238, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-light);
 }
 
 /* Layout */
-.section-padding { padding: 6rem 5%; }
-h2 {
-  font-size: 2.5rem;
-  text-align: center;
-  margin-bottom: 1rem;
-  line-height: 1.3;
-}
+.section-padding { padding: 8rem 5%; }
 .section-subtitle {
   text-align: center;
   color: var(--text-muted);
-  margin-bottom: 3rem;
-  font-size: 1.05rem;
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
 }
 
 /* Interactive Solutions Section */
-.solutions-container { max-width: 1200px; margin: 0 auto; }
+.solutions-container { max-width: 1100px; margin: 0 auto; }
 .solution-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.8rem;
   margin-bottom: 3rem;
 }
 .sol-btn {
-  background: rgba(15, 23, 42, 0.8);
+  background: var(--bg-card);
   color: var(--text-muted);
   border: 1px solid var(--border-color);
-  padding: 0.9rem 1.6rem;
-  border-radius: 999px;
-  font-size: 0.95rem;
-  font-weight: 600;
+  padding: 0.8rem 1.5rem;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.25s ease;
-  backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
 }
 .sol-btn:hover {
-  border-color: var(--primary-color);
+  border-color: rgba(255,255,255,0.3);
   color: var(--text-light);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
 }
 .sol-btn.active {
-  background: linear-gradient(135deg, #22d3ee, #a855f7);
-  color: #020617;
+  background: var(--text-light);
+  color: #000;
   border-color: transparent;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.9);
 }
 
 .solution-reveal {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 3rem;
+  gap: 4rem;
   background: var(--bg-card);
   padding: 3rem;
-  border-radius: 20px;
+  border-radius: 24px;
   border: 1px solid var(--border-color);
-  opacity: 1;
-  transform-style: preserve-3d;
-  box-shadow:
-    0 22px 60px rgba(15, 23, 42, 0.95),
-    0 0 0 1px rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(18px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 .solution-reveal.fade { opacity: 0; transform: translateY(10px); }
 
@@ -325,18 +253,14 @@ h2 {
   height: 350px;
   border-radius: 16px;
   border: 1px solid var(--border-color);
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  background-color: #020617;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.7);
+  background-color: #09090b;
 }
 .solution-video-box video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.8;
 }
 .solution-text-box { flex: 1; min-width: 300px; }
 .solution-text-box h3 {
@@ -347,478 +271,256 @@ h2 {
 }
 .solution-text-box p {
   color: var(--text-muted);
-  font-size: 1.05rem;
+  font-size: 1rem;
   margin-bottom: 2rem;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 .solution-tag {
   display: inline-block;
-  background: rgba(34, 211, 238, 0.1);
-  color: var(--primary-color);
-  padding: 0.35rem 0.95rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
   font-weight: 600;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-/* Technical Capabilities & Generic Glass Cards */
+/* Hyper-Modern Glass Cards */
 .service-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  justify-content: center;
+  gap: 1.5rem;
 }
 
-/* glass 3D card */
-.service-card,
-.project-card,
-.blog-card,
-.feature-item,
-.example-card {
-  background: var(--bg-card);
-  border-radius: 18px;
+.service-card, .project-card, .blog-card, .feature-item, .example-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border-radius: 24px;
   border: 1px solid var(--border-color);
-  box-shadow:
-    0 22px 60px rgba(15, 23, 42, 0.9),
-    0 0 0 1px rgba(15, 23, 42, 0.7);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  transform-style: preserve-3d;
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease,
-    background 0.35s ease;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.service-card:hover,
-.project-card:hover,
-.blog-card:hover,
-.feature-item:hover,
-.example-card:hover {
-  transform: translate3d(0, -12px, 30px) rotateX(4deg);
-  border-color: rgba(56, 189, 248, 0.9);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.95),
-    0 0 40px rgba(56, 189, 248, 0.65);
-  background: radial-gradient(circle at 0 0,
-    rgba(56, 189, 248, 0.24),
-    rgba(15, 23, 42, 0.96));
+
+.service-card:hover, .project-card:hover, .blog-card:hover, .example-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 .service-card {
-  padding: 2rem;
-  text-align: center;
-  border-top: 3px solid transparent;
+  padding: 2.5rem 2rem;
+  text-align: left;
   cursor: pointer;
 }
 .service-card i {
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 1rem;
-  animation: floatIcon 4s ease-in-out infinite;
+  font-size: 2rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
 }
-.service-card h3 { margin-bottom: 1rem; }
-.service-card p { color: var(--text-muted); font-size: 0.95rem; }
+.service-card h3 { margin-bottom: 0.8rem; font-size: 1.3rem; }
+.service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 .service-card .click-text {
   display: block;
-  margin-top: 1rem;
-  color: var(--primary-color);
-  font-weight: bold;
-  font-size: 0.9rem;
+  margin-top: 1.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
 }
+.service-card:hover .click-text { opacity: 1; }
 
 /* Projects & Blog */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
 }
-.project-card { overflow: hidden; }
+.project-card { overflow: hidden; padding: 0.5rem; }
 .project-img {
-  height: 200px;
-  background-size: cover;
-  background-position: center;
+  height: 220px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #18181b, #27272a);
 }
-.bg-1 {
-  background: linear-gradient(135deg, #22d3ee, #a855f7);
-}
-.project-info { padding: 1.5rem; }
+.project-info { padding: 1.5rem 1rem 1rem 1rem; }
 .tags span {
-  background: rgba(34, 211, 238, 0.1);
-  color: var(--primary-color);
+  background: rgba(255,255,255,0.08);
+  color: var(--text-light);
   padding: 0.3rem 0.8rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
   margin-right: 0.5rem;
   display: inline-block;
+  font-weight: 500;
 }
 
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
 }
-.blog-card { display: flex; flex-direction: column; }
-.blog-content {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
+.blog-content { padding: 2rem; display: flex; flex-direction: column; height: 100%; }
 .blog-meta {
-  font-size: 0.85rem;
-  color: var(--primary-color);
-  font-weight: bold;
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
 }
 .blog-title {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   margin-bottom: 1rem;
   color: var(--text-light);
-  line-height: 1.3;
+  line-height: 1.4;
 }
-.blog-excerpt {
-  color: var(--text-muted);
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  flex-grow: 1;
-}
-.blog-link {
-  color: var(--text-light);
-  text-decoration: none;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.25s ease;
-  margin-top: auto;
-}
-.blog-link:hover { color: var(--primary-color); }
+.blog-excerpt { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; flex-grow: 1; }
+.blog-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
 
 /* About & Contact */
-.about-content {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-.social-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
+.about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+.social-grid { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 .social-btn {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.9rem 2.1rem;
-  border-radius: 999px;
-  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 99px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
   text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.85);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 .social-btn:hover {
-  transform: translateY(-3px);
-  opacity: 0.93;
+  background: var(--text-light);
+  color: #000;
 }
-.whatsapp { background-color: #22c55e; }
-.email { background-color: #f97316; }
-.github { background-color: #111827; }
-.linkedin { background-color: #0ea5e9; }
 
 footer {
   text-align: center;
   padding: 2rem;
-  background-color: var(--footer-bg);
+  background-color: var(--bg-dark);
   color: var(--text-muted);
-  border-top: 1px solid rgba(15, 23, 42, 0.9);
-}
-
-/* Dynamic Detail Views System */
-.hidden { display: none !important; }
-
-/* REPLACED: Changed padding-top from 100px to 160px so the icon clears the navbar fully */
-#service-detail-view { padding-top: 160px; min-height: 100vh; }
-.service-header { text-align: center; padding: 2rem 5%; }
-.service-header i { font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem; }
-.service-header h1 { font-size: 3rem; margin-bottom: 1rem; }
-.service-header p { font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
-
-/* Examples & Features spacing tweaks */
-.examples-container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 2rem 5%; background-color: var(--bg-card); border-radius: 15px; border: 1px solid var(--border-color); }
-.examples-header { text-align: center; margin-bottom: 2rem; }
-.examples-header h2 { font-size: 2rem; margin-bottom: 0.5rem; color: var(--primary-color); }
-.examples-header p { color: var(--text-muted); }
-
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.8rem;
-}
-.example-card {
-  padding: 1.6rem 1.4rem;
-  border-top: 3px solid var(--primary-color);
-}
-.example-card h4 {
-  font-size: 1.2rem;
-  margin-bottom: 0.6rem;
-  color: var(--text-light);
-}
-.example-card p { color: var(--text-muted); font-size: 0.95rem; }
-.click-hint {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.85rem;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); }
-.modal-content { background: var(--bg-card); width: 90%; max-width: 700px; border-radius: 15px; padding: 2rem; position: relative; border: 1px solid var(--primary-color); box-shadow: 0 15px 40px rgba(0,255,136,0.1); max-height: 90vh; overflow-y: auto;}
-.modal-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s; z-index: 10;}
-.modal-close:hover { color: var(--primary-color); }
-.modal-img-container { width: 100%; height: 280px; background-color: #0f172a; border-radius: 8px; margin-bottom: 1.5rem; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color); position: relative;}
-.modal-title { font-size: 2rem; margin-bottom: 1rem; color: var(--text-light); line-height: 1.2;}
-.modal-desc { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; }
-
-.no-select { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
-.security-badge { text-align: center; font-size: 0.85rem; color: var(--primary-color); margin-top: 1.5rem; }
-
-/* Features */
-.features-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 5% 6rem 5%;
-}
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.8rem;
-}
-.feature-item {
-  padding: 1.4rem 1.5rem;
-  border-left: 4px solid var(--border-color);
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  border-top: 1px solid var(--border-color);
-  border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  transition: transform 0.2s, border-left-color 0.2s;
-}
-.feature-item:hover {
-  transform: translateX(10px);
-  border-left-color: var(--primary-color);
-}
-.feature-item i {
-  color: var(--text-muted);
-  font-size: 1.2rem;
-  margin-top: 0.1rem;
-  transition: color 0.3s;
-}
-.feature-item span {
-  line-height: 1.7;
-}
-.feature-item:hover i { color: var(--primary-color); }
-
-/* Chatbot */
-.chatbot-container {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 9999;
-}
-.chat-toggle {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: #020617;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  box-shadow: 0 10px 26px rgba(34, 211, 238, 0.45);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-.chat-toggle:hover {
-  transform: translateY(-3px) scale(1.03);
-}
-.chatbot-window {
-  display: none;
-  width: 300px;
-  height: 400px;
-  background-color: var(--bg-card);
-  border-radius: 18px;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.85);
-  flex-direction: column;
-  overflow: hidden;
-  margin-bottom: 15px;
-  border: 1px solid var(--border-color);
-}
-
-.chat-body {
-  flex: 1;
-  padding: 1rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-  scroll-behavior: smooth;
-}
-
-.bot-message,
-.user-message {
-  padding: 0.9rem 1rem;
-  border-radius: 10px;
-  max-width: 85%;
   font-size: 0.9rem;
-  margin-bottom: 0.6rem;
+  border-top: 1px solid var(--border-color);
 }
-.bot-message {
-  background-color: var(--border-color);
-  align-self: flex-start;
-  color: var(--text-light);
-}
-.user-message {
-  background-color: var(--primary-color);
-  color: #020617;
-  align-self: flex-end;
-}
-.chat-footer { display: flex; padding: 0.8rem; background-color: var(--bg-dark); border-top: 1px solid var(--border-color); }
-.chat-footer input { flex: 1; padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 5px; outline: none; background: var(--bg-card); color: var(--text-light); }
-.chat-footer button { background: var(--primary-color); border: none; color: #0f172a; padding: 0 1rem; margin-left: 0.5rem; border-radius: 5px; cursor: pointer; }
-.chat-options { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem; margin-bottom: 1rem; align-items: flex-start; padding: 0 0.5rem; }
-.chat-opt-btn { background: transparent; border: 1px solid var(--primary-color); color: var(--primary-color); padding: 0.6rem 1rem; border-radius: 15px; font-size: 0.85rem; cursor: pointer; transition: all 0.3s; text-align: left; width: 100%; }
-.chat-opt-btn:hover { background: var(--primary-color); color: #0f172a; }
 
-/* Loader (JS is safe even if loader div is missing) */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: #020617;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
+/* Detail Views & Modals */
+.hidden { display: none !important; }
+#service-detail-view { padding-top: 120px; min-height: 100vh; }
+.service-header { text-align: center; padding: 2rem 5%; }
+.service-header i { font-size: 3rem; color: var(--text-light); margin-bottom: 1.5rem; opacity: 0.8;}
+.service-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+.service-header p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+.examples-container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 5%; }
+.examples-header { text-align: center; margin-bottom: 3rem; }
+.examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.example-card { padding: 2rem; cursor: pointer; }
+.example-card h4 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+.example-card p { color: var(--text-muted); font-size: 0.9rem; }
+.click-hint { display: block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-light); font-weight: 600; opacity: 0.6;}
+
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+.modal-content { background: #09090b; width: 90%; max-width: 600px; border-radius: 24px; padding: 2rem; position: relative; border: 1px solid var(--border-color); max-height: 90vh; overflow-y: auto;}
+.modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s; z-index: 10;}
+.modal-close:hover { color: var(--text-light); }
+.modal-img-container { width: 100%; height: 240px; background-color: #18181b; border-radius: 12px; margin-bottom: 2rem; background-size: cover; background-position: center;}
+.modal-title { font-size: 1.8rem; margin-bottom: 1rem;}
+.modal-desc { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; line-height: 1.6; }
+
+/* Features List */
+.features-container { max-width: 1000px; margin: 0 auto; padding: 0 5% 6rem 5%; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.feature-item { padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.feature-item i { color: var(--text-light); opacity: 0.7; font-size: 1rem; }
+.feature-item span { font-size: 0.95rem; color: var(--text-muted); }
+
+/* Chatbot Styles */
+.chatbot-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+
+/* PERFECT NAKED ROBOT ICON TOGGLE */
+.chat-toggle { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 60px; /* Gives the click area shape */
+  height: 60px; 
+  background-color: transparent; /* No circle */
+  color: #ffffff; 
+  border: none; 
+  font-size: 2.5rem; /* Big robot */
+  cursor: pointer; 
+  box-shadow: none; /* No button shadow */
+  transition: transform 0.3s ease, text-shadow 0.3s ease; 
+  outline: none;
 }
-.loader-text {
-  color: var(--primary-color);
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  animation: pulse 1.5s infinite;
+.chat-toggle:hover { 
+  transform: scale(1.15) translateY(-3px); 
+  text-shadow: 0 10px 20px rgba(255, 255, 255, 0.4); /* Glows on hover */
 }
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-@keyframes floatIcon {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0); }
-}
+
+/* Chatbot Window */
+.chatbot-window { display: none; width: 320px; height: 450px; background-color: #09090b; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); flex-direction: column; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--border-color); }
+.chat-header { padding: 1rem; background: var(--bg-card); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; font-weight: 600; font-size: 0.95rem;}
+.chat-header i { cursor: pointer; color: var(--text-muted);}
+.chat-body { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
+.bot-message, .user-message { padding: 0.8rem 1rem; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+.bot-message { background-color: var(--bg-card); border: 1px solid var(--border-color); align-self: flex-start; color: var(--text-light); }
+.user-message { background-color: var(--text-light); color: #000; align-self: flex-end; }
+.chat-footer { display: flex; padding: 1rem; background-color: var(--bg-card); border-top: 1px solid var(--border-color); }
+.chat-footer input { flex: 1; padding: 0.6rem 1rem; border: 1px solid var(--border-color); border-radius: 99px; outline: none; background: #000; color: var(--text-light); font-size: 0.9rem;}
+.chat-footer button { background: var(--text-light); border: none; color: #000; width: 36px; height: 36px; border-radius: 50%; margin-left: 0.5rem; cursor: pointer; }
+.chat-options { display: flex; flex-direction: column; gap: 0.5rem; padding: 0 0.5rem; }
+.chat-opt-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-light); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: left; }
+.chat-opt-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* Loader */
+#loader { position: fixed; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 99999; }
+.loader-text { color: var(--text-light); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  body { overflow-x: hidden; }
-
+  .hero-content h1 { font-size: 3rem; }
+  .section-padding { padding: 5rem 5%; }
   .nav-links {
-    position: fixed;
-    right: 0;
-    top: 0;
-    height: 100vh;
-    background-color: var(--nav-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 70%;
-    transform: translateX(100%);
-    box-shadow: -5px 0 15px rgba(0,0,0,0.4);
-    z-index: 1000;
+    position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
+    flex-direction: column; justify-content: center; width: 100%;
+    transform: translateX(100%); transition: transform 0.4s ease; z-index: 1000;
   }
   .nav-links li { margin: 1.5rem 0; }
-  .nav-links a { font-size: 1.1rem; }
+  .nav-links a { font-size: 1.2rem; }
   .nav-active { transform: translateX(0%); }
   .burger { display: block; }
   .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
   .toggle .line2 { opacity: 0; }
   .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-
-  .hero-content h1 { font-size: 2.6rem; }
-  .hero-content p { font-size: 0.98rem; }
-
-  .section-padding { padding: 4rem 5%; }
-
-  .solution-buttons { gap: 0.6rem; }
-  .sol-btn {
-    padding: 0.65rem 1rem;
-    font-size: 0.85rem;
-    width: 100%;
-  }
-
-  .solution-reveal {
-    flex-direction: column;
-    padding: 1.6rem;
-    gap: 1.5rem;
-    text-align: center;
-  }
-  .solution-video-box {
-    width: 100%;
-    height: 210px;
-    min-width: unset;
-  }
-  .solution-text-box h3 { font-size: 1.5rem; }
-
-  .service-header h1 { font-size: 2rem; }
-
-  .modal-content {
-    width: 95%;
-    padding: 1.5rem;
-  }
-  .modal-img-container { height: 180px; }
-  .modal-title { font-size: 1.5rem; }
-
-  .chatbot-container {
-    bottom: 20px;
-    right: 20px;
-  }
-  .chat-toggle {
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
-  }
-  .chatbot-window {
-    width: 280px;
-    height: 380px;
-  }
-  .social-btn {
-    width: 100%;
-    justify-content: center;
-  }
+  .solution-reveal { flex-direction: column; padding: 2rem; gap: 2rem;}
+  .solution-video-box { height: 200px; }
+  .chatbot-window { width: 90vw; right: 5vw; bottom: 90px;}
 }
 </style>
 </head>
 <body>
-        <nav id="navbar">
+    <nav id="navbar">
         <a href="#home" class="logo" onclick="showMainView()">Jay<span> More</span></a>
         
        <ul class="nav-links" id="nav-links-list">
-    <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
-    <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
-    <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
-    <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
-    <li><a onclick="showMainViewAndScroll('about')">About</a></li>
-    <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
-   </ul>        
+            <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
+            <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
+            <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
+            <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
+            <li><a onclick="showMainViewAndScroll('about')">About</a></li>
+            <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
+       </ul>        
         <div class="burger" id="burger">
             <div class="line1"></div>
             <div class="line2"></div>
@@ -841,11 +543,11 @@ footer {
             
             <div class="solutions-container">
                 <div class="solution-buttons">
-                    <button class="sol-btn active" onclick="loadInlineSolution(event, 'hotel')"><i class="fas fa-utensils"></i> Hotel & Shop Management</button>
-                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ecommerce')"><i class="fas fa-shopping-bag"></i> Sell Products Online</button>
-                    <button class="sol-btn" onclick="loadInlineSolution(event, 'portfolio')"><i class="fas fa-briefcase"></i> Personal Portfolio</button>
-                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ai')"><i class="fas fa-robot"></i> AI Auto-Replies</button>
-                    <button class="sol-btn" onclick="loadInlineSolution(event, 'business')"><i class="fas fa-building"></i> Custom Business Website</button>
+                    <button class="sol-btn active" onclick="loadInlineSolution(event, 'hotel')"><i class="fas fa-utensils"></i> Hotel & Shop</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ecommerce')"><i class="fas fa-shopping-bag"></i> E-Commerce</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'portfolio')"><i class="fas fa-briefcase"></i> Portfolio</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ai')"><i class="fas fa-robot"></i> AI Agents</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'business')"><i class="fas fa-building"></i> Corporate</button>
                 </div>
 
                 <div class="solution-reveal" id="solution-display">
@@ -862,7 +564,7 @@ footer {
             </div>
         </section>
 
-        <section id="tech-stack" class="section-padding" style="background-color: var(--bg-card);">
+        <section id="tech-stack" class="section-padding" style="background-color: #050505;">
             <h2>Technical Capabilities</h2>
             <p class="section-subtitle">Under the hood. The technologies and architectures I use to make it happen.</p>
             <div class="service-grid">
@@ -870,31 +572,31 @@ footer {
                     <i class="fas fa-code"></i>
                     <h3>Full-Stack Dev</h3>
                     <p>Custom REST APIs, responsive UI/UX, and robust SQL/NoSQL databases.</p>
-                    <span class="click-text">View 10 tech features &rarr;</span>
+                    <span class="click-text">View features &rarr;</span>
                 </div>
                 <div class="service-card" onclick="openServiceDetails('saas')">
                     <i class="fas fa-cloud"></i>
                     <h3>SaaS Architecture</h3>
                     <p>Multi-tenant systems, tiered billing, and secure role-based access control.</p>
-                    <span class="click-text">View 10 tech features &rarr;</span>
+                    <span class="click-text">View features &rarr;</span>
                 </div>
                 <div class="service-card" onclick="openServiceDetails('ecommerce')">
                     <i class="fas fa-shopping-cart"></i>
                     <h3>E-Commerce</h3>
                     <p>Secure payment gateways (Stripe/Razorpay) and real-time inventory logic.</p>
-                    <span class="click-text">View 10 tech features &rarr;</span>
+                    <span class="click-text">View features &rarr;</span>
                 </div>
                 <div class="service-card" onclick="openServiceDetails('ai')">
                     <i class="fas fa-robot"></i>
                     <h3>AI Integration</h3>
                     <p>OpenAI API integrations, custom NLP chatbots, and automated workflows.</p>
-                    <span class="click-text">View 10 tech features &rarr;</span>
+                    <span class="click-text">View features &rarr;</span>
                 </div>
                 <div class="service-card" onclick="openServiceDetails('cybersecurity')">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Cybersecurity</h3>
                     <p>OWASP Top 10 prevention, data encryption, and JWT secure endpoints.</p>
-                    <span class="click-text">View 10 tech features &rarr;</span>
+                    <span class="click-text">View features &rarr;</span>
                 </div>
             </div>
         </section>
@@ -906,31 +608,31 @@ footer {
                     <div class="project-img bg-1"></div>
                     <div class="project-info">
                         <h3 style="color: var(--text-light); margin-bottom: 0.5rem;">AI-Powered SaaS Dashboard</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 1rem;">Analytics dashboard integrating OpenAI's API.</p>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Analytics dashboard integrating OpenAI's API.</p>
                         <div class="tags"><span>React</span><span>Node.js</span><span>AI API</span></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="blog" class="section-padding" style="background-color: var(--bg-card);">
+        <section id="blog" class="section-padding" style="background-color: #050505;">
             <h2>Technical Blog</h2>
-            <p class="section-subtitle">Deep dive articles on software engineering architectures and cybersecurity breakdowns.</p>
+            <p class="section-subtitle">Deep dive articles on software engineering architectures.</p>
             <div class="blog-grid">
                 <article class="blog-card">
                     <div class="blog-content">
-                        <div class="blog-meta">SOFTWARE ENGINEERING • 5 MIN READ</div>
+                        <div class="blog-meta">ARCHITECTURE • 5 MIN READ</div>
                         <h3 class="blog-title">Architecting Resilient E-Commerce Platforms</h3>
                         <p class="blog-excerpt">A deep dive into the system design patterns required to handle high-traffic sales events without database bottlenecks.</p>
-                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
                     </div>
                 </article>
                 <article class="blog-card">
                     <div class="blog-content">
-                        <div class="blog-meta">CYBERSECURITY • 7 MIN READ</div>
+                        <div class="blog-meta">SECURITY • 7 MIN READ</div>
                         <h3 class="blog-title">Analyzing Common Webhook Vulnerabilities</h3>
                         <p class="blog-excerpt">Exploring threat vectors in automated chatbot infrastructures and how to secure API gateways against injection attacks.</p>
-                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
                     </div>
                 </article>
                 <article class="blog-card">
@@ -938,7 +640,7 @@ footer {
                         <div class="blog-meta">AI INTEGRATION • 4 MIN READ</div>
                         <h3 class="blog-title">Handling Meta's 2026 WhatsApp API Constraints</h3>
                         <p class="blog-excerpt">How to bypass webhook failures and properly structure system prompts for strict enterprise-level AI chatbot compliance.</p>
-                        <a href="#" class="blog-link">Read Case Study <i class="fas fa-arrow-right"></i></a>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
                     </div>
                 </article>
             </div>
@@ -947,36 +649,42 @@ footer {
         <section id="about" class="section-padding">
             <div class="about-content">
                 <h2>About Me</h2>
-                <p style="font-size: 1.1rem; color: var(--text-light); margin-bottom: 2.5rem;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork.</p>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; font-weight: 400;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects.</p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; text-align: left; margin-bottom: 2rem;">
-                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-graduation-cap"></i> Education</h3>
-                        <p style="margin-bottom: 0.5rem; color: var(--text-light);"><strong>Universal SkillTech University</strong></p>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">B.Tech in Computer Science Engineering<br>2024 - 2028 | Second Year (4th Sem)<br>CGPA: 7.06</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; text-align: left; margin-bottom: 3rem;">
+                    <div class="service-card" style="padding: 2rem;">
+                        <h3 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.2rem;"><i class="fas fa-graduation-cap" style="font-size:1.2rem; margin-bottom:0;"></i> Education</h3>
+                        <p style="margin-bottom: 0.5rem; color: var(--text-light); font-weight: 600;">Universal SkillTech University</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">B.Tech in Computer Science Engineering<br>2024 - 2028 | Second Year (4th Sem)<br>CGPA: 7.06</p>
                     </div>
-                    <div style="background: var(--bg-card); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color);">
-                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;"><i class="fas fa-certificate"></i> Certifications</h3>
-                        <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem; line-height: 1.8;">
-                            <li><i class="fas fa-shield-alt" style="color: var(--primary-color); width: 20px;"></i> Ethical Hacking - Cisco</li>
-                            <li><i class="fab fa-python" style="color: var(--primary-color); width: 20px;"></i> Python Basics - DataCamp</li>
-                            <li><i class="fas fa-brain" style="color: var(--primary-color); width: 20px;"></i> Python with AI - SkillLevel</li>
+                    <div class="service-card" style="padding: 2rem;">
+                        <h3 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.2rem;"><i class="fas fa-certificate" style="font-size:1.2rem; margin-bottom:0;"></i> Certifications</h3>
+                        <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem; line-height: 2.2;">
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fas fa-shield-alt" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Ethical Hacking - Cisco
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fab fa-python" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Python Basics - DataCamp
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fas fa-brain" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Python with AI - SkillLevel
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <div style="margin-top: 2rem;">
-                    <button onclick="openResumeModal()" class="btn btn-outline"><i class="fas fa-file-alt"></i> View Full Resume</button>
+                <div>
+                    <button onclick="openResumeModal()" class="btn btn-outline">View Full Resume</button>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section-padding" style="background-color: var(--bg-card);">
+        <section id="contact" class="section-padding" style="background-color: #050505;">
             <h2>Let's Connect</h2>
             <p class="section-subtitle">Reach out through any of the platforms below.</p>
             <div class="social-grid">
                 <a href="https://wa.me/9137435654" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                <a href="mailto:jaymore2156@gmail.com" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jaymore2156@gmail.com" target="_blank" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
                 <a href="https://github.com/JayMore05" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
                 <a href="https://www.linkedin.com/in/jaymore05" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
             </div>
@@ -992,18 +700,17 @@ footer {
 
         <div class="examples-container">
             <div class="examples-header">
-                <h2>Real-World Solutions</h2>
-                <p>Click any example to see how it works for your business.</p>
+                <h2 style="font-size: 2rem;">Real-World Solutions</h2>
             </div>
             <div class="examples-grid" id="detail-examples-list"></div>
         </div>
 
         <div class="features-container">
-            <h2 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--text-light); text-align: center;">Under The Hood (10 Technical Features)</h2>
+            <h2 style="font-size: 1.8rem; margin-bottom: 3rem;">Technical Implementation</h2>
             <div class="features-grid" id="detail-features-list"></div>
             
-            <div style="text-align: center; margin-top: 4rem;">
-                <button onclick="showMainViewAndScroll('tech-stack')" class="btn"><i class="fas fa-arrow-left"></i> Back to Tech Stack</button>
+            <div style="text-align: center; margin-top: 5rem;">
+                <button onclick="showMainViewAndScroll('tech-stack')" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back</button>
             </div>
         </div>
     </div>
@@ -1014,36 +721,36 @@ footer {
             <div class="modal-img-container" id="modal-img"></div>
             <h3 class="modal-title" id="modal-title">Example Title</h3>
             <p class="modal-desc" id="modal-desc">Detailed explanation goes here...</p>
-            <a href="#" target="_blank" class="btn" id="modal-wa-btn">Ask about this solution <i class="fab fa-whatsapp"></i></a>
+            <a href="#" target="_blank" class="btn" id="modal-wa-btn" style="width: 100%;">Discuss Project</a>
         </div>
     </div>
 
     <div id="resume-modal" class="modal-overlay hidden no-select">
         <div class="modal-content" style="max-width: 800px; text-align: left;">
             <i class="fas fa-times modal-close" onclick="closeResumeModal()"></i>
-            <h3 class="modal-title" style="text-align: center; margin-bottom: 0.5rem;">Jay More</h3>
-            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2rem;">Mumbai, Maharashtra | 9137435654 | jaymore2156@gmail.com</p>
+            <h3 class="modal-title" style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;">Jay More</h3>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.9rem;">Mumbai, Maharashtra | 9137435654 | jaymore2156@gmail.com</p>
             
-            <div style="background-color: var(--bg-dark); padding: 2rem; border-radius: 8px; border: 1px solid var(--border-color); color: var(--text-light); line-height: 1.8; max-height: 50vh; overflow-y: auto;">
-                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Professional Summary</h4>
-                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.</p>
+            <div style="background-color: #000; padding: 2rem; border-radius: 16px; border: 1px solid var(--border-color); color: var(--text-light); line-height: 1.8; max-height: 50vh; overflow-y: auto;">
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Professional Summary</h4>
+                <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.</p>
 
-                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Education</h4>
-                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"><strong>B.Tech in Computer Science Engineering</strong><br>Universal SkillTech University (2024-2028)<br>Second Year (4th Semester) | CGPA: 7.06</p>
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Education</h4>
+                <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);"><strong>B.Tech in Computer Science Engineering</strong><br>Universal SkillTech University (2024-2028)<br>Second Year (4th Semester) | CGPA: 7.06</p>
 
-                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Core Skills</h4>
-                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem; font-size: 0.95rem;">
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Core Skills</h4>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);">
                     <div style="flex: 1; min-width: 250px;">
-                        <strong>Analytical & Technical:</strong>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <strong style="color: var(--text-light);">Analytical & Technical:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
                             <li>Python, C (programming fundamentals)</li>
                             <li>Logical thinking & problem-solving</li>
                             <li>Basic data handling and analysis</li>
                         </ul>
                     </div>
                     <div style="flex: 1; min-width: 250px;">
-                        <strong>Professional & Consulting:</strong>
-                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <strong style="color: var(--text-light);">Professional & Consulting:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
                             <li>Research and information gathering</li>
                             <li>Clear written and verbal communication</li>
                             <li>Team collaboration and time management</li>
@@ -1051,8 +758,8 @@ footer {
                     </div>
                 </div>
 
-                <h4 style="color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-bottom: 1rem;">Certifications & Strengths</h4>
-                <ul style="margin-left: 1.5rem; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Certifications & Strengths</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
                     <li>Ethical Hacking - Cisco (security fundamentals)</li>
                     <li>Python Basics - DataCamp</li>
                     <li>Python with AI - SkillLevel</li>
@@ -1060,8 +767,8 @@ footer {
                 </ul>
             </div>
             
-            <div class="security-badge">
-                <i class="fas fa-shield-alt"></i> Screen Capture & Printing Disabled (Browser Level)
+            <div style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; opacity: 0.7;">
+                <i class="fas fa-lock"></i> Protected Document
             </div>
         </div>
     </div>
@@ -1074,35 +781,27 @@ footer {
             </div>
             <div class="chat-body" id="chat-body"></div>
             <div class="chat-footer">
-                <input type="text" id="chat-input" placeholder="Or type a message...">
+                <input type="text" id="chat-input" placeholder="Type a message...">
                 <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
         <button class="chat-toggle" id="chat-toggle">
-            <i class="fas fa-comment-dots"></i>
+            <i class="fas fa-robot"></i>
         </button>
     </div>
 
     <footer>
-        <p>&copy; 2026 Jay More. Built with code and secure architecture.</p>
+        <p>&copy; 2026 Jay More. Architected in Mumbai.</p>
     </footer>
 
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
 
-    <script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
-
     <script>
-        
-
         // --- Mobile Hamburger Menu Logic ---
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links-list');
@@ -1125,27 +824,17 @@ footer {
         // --- Navbar Scroll Effect ---
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            if (window.scrollY > 50) navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
             else navbar.style.boxShadow = 'none';
         });
 
-        // --- YOUR LOCAL VIDEOS PLAYLIST DATABASE ---
+        // --- LOCAL VIDEOS PLAYLIST DATABASE ---
         const videoLibrary = {
-            hotel: [
-                "assests/videos/hotel/hotel1.mp4"
-            ],
-            ecommerce: [
-                "assests/videos/ecommerce/ecommerce1.mp4"
-            ],
-            portfolio: [
-                "assests/videos/portfolio/portfolio1.mp4"
-            ],
-            ai: [
-                "assests/videos/ai/ai1.mp4"
-            ],
-            business: [
-                "assests/videos/business/business1.mp4"
-            ]
+            hotel: ["assests/videos/hotel/hotel1.mp4"],
+            ecommerce: ["assests/videos/ecommerce/ecommerce1.mp4"],
+            portfolio: ["assests/videos/portfolio/portfolio1.mp4"],
+            ai: ["assests/videos/ai/ai1.mp4"],
+            business: ["assests/videos/business/business1.mp4"]
         };
 
         const inlineSolutionsData = {
@@ -1249,7 +938,6 @@ footer {
             const data = deepDiveData[serviceId];
             if (!data) return;
             
-            // --- LOGO FIX IN JAVASCRIPT ---
             document.getElementById('navbar').classList.add('hide-logo');
             
             document.getElementById('detail-title').textContent = data.title;
@@ -1261,7 +949,7 @@ footer {
                 const div = document.createElement('div');
                 div.className = 'example-card';
                 div.onclick = () => openExampleModal(serviceId, index);
-                div.innerHTML = `<h4>${ex.title}</h4><p>${ex.desc}</p><span class="click-hint"><i class="fas fa-play-circle"></i> View Details</span>`;
+                div.innerHTML = `<h4>${ex.title}</h4><p>${ex.desc}</p><span class="click-hint"><i class="fas fa-arrow-right"></i> View Details</span>`;
                 examplesList.appendChild(div);
             });
             const featuresList = document.getElementById('detail-features-list');
@@ -1269,7 +957,7 @@ footer {
             data.items.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'feature-item';
-                div.innerHTML = `<i class="fas fa-check"></i> <span>${item}</span>`;
+                div.innerHTML = `<i class="fas fa-check-circle"></i> <span>${item}</span>`;
                 featuresList.appendChild(div);
             });
             mainView.classList.add('hidden');
@@ -1278,7 +966,6 @@ footer {
         }
 
         function showMainView() {
-            // --- LOGO RESTORE IN JAVASCRIPT ---
             document.getElementById('navbar').classList.remove('hide-logo');
             
             detailView.classList.add('hidden');
@@ -1305,7 +992,7 @@ footer {
             document.getElementById('modal-title').textContent = ex.title;
             document.getElementById('modal-desc').textContent = ex.detailedDesc;
             document.getElementById('modal-img').style.backgroundImage =
-                `url('https://placehold.co/800x400/1e293b/00ff88?text=${encodeURIComponent(ex.title.split(' ')[0] + " Demo")}')`;
+                `url('https://placehold.co/800x400/1e293b/ffffff?text=${encodeURIComponent(ex.title.split(' ')[0] + " Demo")}')`;
             
             const waText = encodeURIComponent(`Hi Jay, I am interested in building a solution like: ${ex.title}`);
             document.getElementById('modal-wa-btn').href = `https://wa.me/9137435654?text=${waText}`;
@@ -1347,7 +1034,7 @@ footer {
             }
         }
 
-        // --- DIAGNOSTIC CONSULTANT CHATBOT LOGIC (MULTI-STEP FLOW) ---
+        // --- DIAGNOSTIC CONSULTANT CHATBOT LOGIC ---
         const chatToggle = document.getElementById('chat-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const closeChat = document.getElementById('close-chat');
@@ -1356,6 +1043,7 @@ footer {
         const chatBody = document.getElementById('chat-body');
         let chatInitialized = false;
 
+        /* PERFECT JAVASCRIPT LOGIC TO HIDE/SHOW WITHOUT BREAKING CSS */
         chatToggle.addEventListener('click', () => { 
             chatbotWindow.style.display = 'flex'; 
             chatToggle.style.display = 'none'; 
@@ -1367,10 +1055,9 @@ footer {
         
         closeChat.addEventListener('click', () => { 
             chatbotWindow.style.display = 'none'; 
-            chatToggle.style.display = 'block'; 
+            chatToggle.style.display = 'flex'; 
         });
 
-        // STEP 1: Greeting & Tech Stack
         function startDiagnosticFlow() {
             addMessageToChat('bot-message', "Hi! I'm Jay's assistant. To help point you in the right direction, which technical capability are you looking for?");
             
@@ -1385,7 +1072,6 @@ footer {
             }, 500);
         }
 
-        // Dynamic Options Renderer
         function showOptions(options) {
             const optionsDiv = document.createElement('div');
             optionsDiv.className = 'chat-options';
@@ -1394,7 +1080,7 @@ footer {
             options.forEach(opt => {
                 const btn = document.createElement('button');
                 btn.className = 'chat-opt-btn';
-                btn.innerHTML = `<i class="fas fa-arrow-right"></i> ${opt.text}`;
+                btn.innerHTML = `<i class="fas fa-arrow-right" style="font-size:0.8em; opacity:0.7"></i> ${opt.text}`;
                 btn.onclick = () => handleOptionSelection(opt.text, opt.action, opt.step, opt.parentCategory);
                 optionsDiv.appendChild(btn);
             });
@@ -1402,7 +1088,6 @@ footer {
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        // Logic Handler for Clicks
         function handleOptionSelection(userText, actionType, step, parentCategory) {
             const currentOptions = document.getElementById('current-options');
             if (currentOptions) currentOptions.remove();
@@ -1433,7 +1118,7 @@ footer {
                         showOptions(nextOptions);
                     }, 500);
                 } else if (step === 2) {
-                    addMessageToChat('bot-message', `Excellent choice! A ${userText} solution is highly effective. Let's connect you directly with Jay to discuss building it.`);
+                    addMessageToChat('bot-message', `Excellent choice! Let's connect you directly with Jay to discuss building it.`);
 
                     setTimeout(() => {
                         const waText = encodeURIComponent(`Hi Jay, I am interested in your ${parentCategory} services, specifically building: ${userText}`);
@@ -1441,7 +1126,7 @@ footer {
 
                         const waBtnDiv = document.createElement('div');
                         waBtnDiv.className = 'chat-options';
-                        waBtnDiv.innerHTML = `<a href="${waLink}" target="_blank" class="chat-opt-btn" style="background:var(--primary-color); color:#0f172a; font-weight:bold; text-align:center; display:block; width: 100%;"><i class="fab fa-whatsapp"></i> Chat with Jay on WhatsApp</a>`;
+                        waBtnDiv.innerHTML = `<a href="${waLink}" target="_blank" class="chat-opt-btn" style="background:#fff; color:#000; font-weight:bold; text-align:center; display:block; width: 100%; border:none;"><i class="fab fa-whatsapp"></i> Chat with Jay</a>`;
                         chatBody.appendChild(waBtnDiv);
                         chatBody.scrollTop = chatBody.scrollHeight;
                     }, 800);
@@ -1450,7 +1135,6 @@ footer {
             }, 1000);
         }
 
-        // Handle Manual Typing Fallback
         sendBtn.addEventListener('click', handleManualMessage);
         chatInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') handleManualMessage();
@@ -1463,11 +1147,10 @@ footer {
             chatInput.value = '';
             
             setTimeout(() => {
-                addMessageToChat('bot-message', "I'm a guided assistant right now! For detailed technical answers, please select an option above or click the WhatsApp link to chat directly with Jay.");
+                addMessageToChat('bot-message', "I'm a guided assistant right now! Please select an option above or click the WhatsApp link to chat directly with Jay.");
             }, 500);
         }
 
-        // Utility to inject messages
         function addMessageToChat(className, messageText) {
             const msgDiv = document.createElement('div');
             msgDiv.classList.add(className);
@@ -1476,66 +1159,21 @@ footer {
             chatBody.scrollTop = chatBody.scrollHeight;
         }
 
-        /* ===== LOADER ===== */
-        window.addEventListener("load", () => {
-            const loader = document.getElementById("loader");
-            if (loader) loader.style.display = "none";
-        });
-
         /* ===== APPLE SMOOTH SCROLL ===== */
-        const lenis = new Lenis({
-            duration: 1.2,
-            smooth: true
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
 
         /* ===== CARD 3D TILT ===== */
-        VanillaTilt.init(document.querySelectorAll(".service-card"), {
-            max: 15,
+        VanillaTilt.init(document.querySelectorAll(".service-card, .project-card"), {
+            max: 5,
             speed: 400,
             glare: true,
-            "max-glare": 0.3
-        });
-
-        VanillaTilt.init(document.querySelectorAll(".project-card"), {
-            max: 12,
-            speed: 400
+            "max-glare": 0.1
         });
 
         /* ===== SCROLL ANIMATIONS ===== */
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-
-        /* ===== PREMIUM CURSOR ===== */
-        new cursoreffects.fairyDustCursor();
-
-        // Hero parallax 3D tilt
-        const hero = document.querySelector('.hero');
-        const heroContent = document.querySelector('.hero-content');
-
-        if (hero && heroContent) {
-          hero.addEventListener('mousemove', (e) => {
-            const rect = hero.getBoundingClientRect();
-            const x = (e.clientX - rect.left) / rect.width - 0.5;
-            const y = (e.clientY - rect.top) / rect.height - 0.5;
-            heroContent.style.transform =
-              `translate3d(${x * 20}px, ${y * 10}px, 0) rotateX(${y * -4}deg) rotateY(${x * 6}deg)`;
-          });
-
-          hero.addEventListener('mouseleave', () => {
-            heroContent.style.transform =
-              'translate3d(0,0,0) rotateX(0deg) rotateY(0deg)';
-          });
-        }
+        AOS.init({ duration: 800, once: true });
     </script>
-   
 </body>
 </html>
