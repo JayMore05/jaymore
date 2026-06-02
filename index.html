@@ -3,784 +3,1177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <title>Jay More | Software Engineer | Universal SkillTech University</title>
+
     <meta name="title" content="Jay More | Software Engineer Portfolio">
     <meta name="description" content="Computer Science Engineering student at Universal SkillTech University. Specialized in Java, Data Structures, and Software Development.">
+
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jaymore.vercel.app/">
     <meta property="og:title" content="Jay More | Software Engineer Portfolio">
     <meta property="og:description" content="Explore my projects in E-commerce, AI, and Software Engineering.">
     <meta property="og:image" content="https://jaymore.vercel.app/assests/images/portfolio-preview.jpg">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                    colors: {
-                        primary: '#0ea5e9', // Sky blue
-                        secondary: '#6366f1', // Indigo
-                        accent: '#10b981', // Emerald
-                        dark: '#0f172a', // Slate 900
-                        darker: '#020617', // Slate 950
-                    },
-                    animation: {
-                        'blob': 'blob 7s infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        blob: {
-                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
-                        },
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #020617;
-            color: #e2e8f0;
-            overflow-x: hidden;
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
-        /* Glassmorphism */
-        .glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+<style>
+/* Base Styles & Modern Variables */
+:root {
+  --primary-color: #ffffff;       
+  --accent-color: #a1a1aa;        
+  --bg-dark: #000000;             
+  --bg-card: rgba(255, 255, 255, 0.03); 
+  --text-light: #ffffff;
+  --text-muted: #a1a1aa;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --nav-bg: rgba(0, 0, 0, 0.7);
+  --footer-bg: #000000;
+}
 
-        .glass-card {
-            background: rgba(30, 41, 59, 0.4);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  scroll-behavior: smooth;
+}
 
-        .glass-card:hover {
-            background: rgba(30, 41, 59, 0.6);
-            border-color: rgba(14, 165, 233, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.2);
-        }
+body {
+  background-color: var(--bg-dark);
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.04), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.04), transparent 25%);
+  color: var(--text-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
 
-        /* Text Gradient */
-        .text-gradient {
-            background: linear-gradient(to right, #38bdf8, #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+/* Typography Upgrades */
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
 
-        /* Cursor blink */
-        .cursor-blink { animation: blink 1s step-end infinite; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
-        /* Reveal Animation Classes */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+/* Navigation */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  background-color: var(--nav-bg);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
 
-        /* Canvas positioning */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-    </style>
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--text-light);
+  letter-spacing: -0.05em;
+  z-index: 1001;
+}
+.logo span { color: var(--text-muted); }
+
+#navbar.hide-logo .logo { display: none !important; }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+.nav-links li { margin-left: 2rem; }
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+.nav-links a:hover {
+  color: var(--text-light);
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.burger div {
+  width: 24px;
+  height: 2px;
+  background-color: var(--text-light);
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 5%;
+  position: relative;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  background: linear-gradient(180deg, #ffffff 0%, #71717a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-content span { 
+  background: linear-gradient(90deg, #fff, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.hero-content p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin: 0 auto 2.5rem auto;
+  font-weight: 400;
+}
+
+/* High-Contrast Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  background: var(--text-light);
+  color: #000000;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  background: #e4e4e7;
+}
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-light);
+  box-shadow: none;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-light);
+}
+
+/* Layout */
+.section-padding { padding: 8rem 5%; }
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 4rem;
+  font-size: 1.1rem;
+}
+
+/* Interactive Solutions Section */
+.solutions-container { max-width: 1100px; margin: 0 auto; }
+.solution-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 3rem;
+}
+.sol-btn {
+  background: var(--bg-card);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: 99px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.sol-btn:hover {
+  border-color: rgba(255,255,255,0.3);
+  color: var(--text-light);
+}
+.sol-btn.active {
+  background: var(--text-light);
+  color: #000;
+  border-color: transparent;
+}
+
+.solution-reveal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4rem;
+  background: var(--bg-card);
+  padding: 3rem;
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  backdrop-filter: blur(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.solution-reveal.fade { opacity: 0; transform: translateY(10px); }
+
+.solution-video-box {
+  flex: 1;
+  min-width: 300px;
+  height: 350px;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  background-color: #09090b;
+}
+.solution-video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.solution-text-box { flex: 1; min-width: 300px; }
+.solution-text-box h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+.solution-text-box p {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+.solution-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Hyper-Modern Glass Cards */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card, .project-card, .blog-card, .feature-item, .example-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card:hover, .project-card:hover, .blog-card:hover, .example-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255,255,255,0.2);
+  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.service-card {
+  padding: 2.5rem 2rem;
+  text-align: left;
+  cursor: pointer;
+}
+.service-card i {
+  font-size: 2rem;
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+.service-card h3 { margin-bottom: 0.8rem; font-size: 1.3rem; }
+.service-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+.service-card .click-text {
+  display: block;
+  margin-top: 1.5rem;
+  color: var(--text-light);
+  font-weight: 600;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+.service-card:hover .click-text { opacity: 1; }
+
+/* Projects & Blog */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.project-card { overflow: hidden; padding: 0.5rem; }
+.project-img {
+  height: 220px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #18181b, #27272a);
+}
+.project-info { padding: 1.5rem 1rem 1rem 1rem; }
+.tags span {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-light);
+  padding: 0.3rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  margin-right: 0.5rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+.blog-content { padding: 2rem; display: flex; flex-direction: column; height: 100%; }
+.blog-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+.blog-title {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  line-height: 1.4;
+}
+.blog-excerpt { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; flex-grow: 1; }
+.blog-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; display: flex; align-items: center; gap: 0.5rem; }
+
+/* About & Contact */
+.about-content { max-width: 800px; margin: 0 auto; text-align: center; }
+.social-grid { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.social-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1.8rem;
+  border-radius: 99px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+.social-btn:hover {
+  background: var(--text-light);
+  color: #000;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--bg-dark);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Detail Views & Modals */
+.hidden { display: none !important; }
+#service-detail-view { padding-top: 120px; min-height: 100vh; }
+.service-header { text-align: center; padding: 2rem 5%; }
+.service-header i { font-size: 3rem; color: var(--text-light); margin-bottom: 1.5rem; opacity: 0.8;}
+.service-header h1 { font-size: 3rem; margin-bottom: 1rem; }
+.service-header p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto; }
+
+.examples-container { max-width: 1100px; margin: 0 auto 4rem auto; padding: 0 5%; }
+.examples-header { text-align: center; margin-bottom: 3rem; }
+.examples-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.example-card { padding: 2rem; cursor: pointer; }
+.example-card h4 { font-size: 1.2rem; margin-bottom: 0.8rem; }
+.example-card p { color: var(--text-muted); font-size: 0.9rem; }
+.click-hint { display: block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--text-light); font-weight: 600; opacity: 0.6;}
+
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); }
+.modal-content { background: #09090b; width: 90%; max-width: 600px; border-radius: 24px; padding: 2rem; position: relative; border: 1px solid var(--border-color); max-height: 90vh; overflow-y: auto;}
+.modal-close { position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); transition: color 0.3s; z-index: 10;}
+.modal-close:hover { color: var(--text-light); }
+.modal-img-container { width: 100%; height: 240px; background-color: #18181b; border-radius: 12px; margin-bottom: 2rem; background-size: cover; background-position: center;}
+.modal-title { font-size: 1.8rem; margin-bottom: 1rem;}
+.modal-desc { color: var(--text-muted); font-size: 1rem; margin-bottom: 2rem; line-height: 1.6; }
+
+/* Features List */
+.features-container { max-width: 1000px; margin: 0 auto; padding: 0 5% 6rem 5%; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; }
+.feature-item { padding: 1.2rem 1.5rem; display: flex; align-items: center; gap: 1rem; }
+.feature-item i { color: var(--text-light); opacity: 0.7; font-size: 1rem; }
+.feature-item span { font-size: 0.95rem; color: var(--text-muted); }
+
+/* Chatbot Styles */
+.chatbot-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; }
+
+/* PERFECT NAKED ROBOT ICON TOGGLE */
+.chat-toggle { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  width: 60px; /* Gives the click area shape */
+  height: 60px; 
+  background-color: transparent; /* No circle */
+  color: #ffffff; 
+  border: none; 
+  font-size: 2.5rem; /* Big robot */
+  cursor: pointer; 
+  box-shadow: none; /* No button shadow */
+  transition: transform 0.3s ease, text-shadow 0.3s ease; 
+  outline: none;
+}
+.chat-toggle:hover { 
+  transform: scale(1.15) translateY(-3px); 
+  text-shadow: 0 10px 20px rgba(255, 255, 255, 0.4); /* Glows on hover */
+}
+
+/* Chatbot Window */
+.chatbot-window { display: none; width: 320px; height: 450px; background-color: #09090b; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.8); flex-direction: column; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--border-color); }
+.chat-header { padding: 1rem; background: var(--bg-card); border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; font-weight: 600; font-size: 0.95rem;}
+.chat-header i { cursor: pointer; color: var(--text-muted);}
+.chat-body { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.8rem; }
+.bot-message, .user-message { padding: 0.8rem 1rem; border-radius: 12px; max-width: 85%; font-size: 0.9rem; }
+.bot-message { background-color: var(--bg-card); border: 1px solid var(--border-color); align-self: flex-start; color: var(--text-light); }
+.user-message { background-color: var(--text-light); color: #000; align-self: flex-end; }
+.chat-footer { display: flex; padding: 1rem; background-color: var(--bg-card); border-top: 1px solid var(--border-color); }
+.chat-footer input { flex: 1; padding: 0.6rem 1rem; border: 1px solid var(--border-color); border-radius: 99px; outline: none; background: #000; color: var(--text-light); font-size: 0.9rem;}
+.chat-footer button { background: var(--text-light); border: none; color: #000; width: 36px; height: 36px; border-radius: 50%; margin-left: 0.5rem; cursor: pointer; }
+.chat-options { display: flex; flex-direction: column; gap: 0.5rem; padding: 0 0.5rem; }
+.chat-opt-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-light); padding: 0.6rem 1rem; border-radius: 8px; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; text-align: left; }
+.chat-opt-btn:hover { background: rgba(255,255,255,0.1); }
+
+/* Loader */
+#loader { position: fixed; width: 100%; height: 100%; background: #000; display: flex; align-items: center; justify-content: center; z-index: 99999; }
+.loader-text { color: var(--text-light); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.1em; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { opacity: 0.3; } 50% { opacity: 1; } 100% { opacity: 0.3; } }
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  .hero-content h1 { font-size: 3rem; }
+  .section-padding { padding: 5rem 5%; }
+  .nav-links {
+    position: fixed; right: 0; top: 0; height: 100vh; background-color: #000;
+    flex-direction: column; justify-content: center; width: 100%;
+    transform: translateX(100%); transition: transform 0.4s ease; z-index: 1000;
+  }
+  .nav-links li { margin: 1.5rem 0; }
+  .nav-links a { font-size: 1.2rem; }
+  .nav-active { transform: translateX(0%); }
+  .burger { display: block; }
+  .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
+  .toggle .line2 { opacity: 0; }
+  .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
+  .solution-reveal { flex-direction: column; padding: 2rem; gap: 2rem;}
+  .solution-video-box { height: 200px; }
+  .chatbot-window { width: 90vw; right: 5vw; bottom: 90px;}
+}
+</style>
 </head>
-<body class="antialiased selection:bg-primary selection:text-white">
-
-    <div id="canvas-container">
-        <canvas id="networkCanvas"></canvas>
-    </div>
-
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex-shrink-0">
-                    <a href="#" class="font-mono text-2xl font-bold text-white tracking-tighter">
-                        &lt;JayMore /&gt;
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#about" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#services" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Services</a>
-                        <a href="#projects" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#blog" class="hover:text-primary transition-colors px-3 py-2 rounded-md text-sm font-medium">Blog</a>
-                        <a href="#contact" class="bg-primary/10 text-primary border border-primary/50 hover:bg-primary hover:text-white transition-all px-4 py-2 rounded-full text-sm font-medium">Let's Talk</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="md:hidden hidden glass border-t border-gray-800" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#services" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Services</a>
-                <a href="#projects" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#blog" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Blog</a>
-                <a href="#contact" class="text-primary block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-            </div>
+<body>
+    <nav id="navbar">
+        <a href="#home" class="logo" onclick="showMainView()">Jay<span> More</span></a>
+        
+       <ul class="nav-links" id="nav-links-list">
+            <li><a onclick="showMainViewAndScroll('solutions')">Solutions</a></li>
+            <li><a onclick="showMainViewAndScroll('tech-stack')">Tech Stack</a></li>
+            <li><a onclick="showMainViewAndScroll('projects')">Projects</a></li>
+            <li><a onclick="showMainViewAndScroll('blog')">Blog</a></li>
+            <li><a onclick="showMainViewAndScroll('about')">About</a></li>
+            <li><a onclick="showMainViewAndScroll('contact')">Contact</a></li>
+       </ul>        
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-8 left-20 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
-
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-            <div class="inline-block mb-4 px-4 py-1 rounded-full border border-primary/30 bg-primary/5 text-primary text-sm font-mono animate-float">
-                B.Tech CSE Student & Software Engineer
+    <div id="main-view">
+        <header id="home" class="hero">
+            <div class="hero-content">
+                <h1>Building Scalable Digital <span>Solutions</span></h1>
+                <p>From custom web applications and SaaS platforms to secure, AI-driven integrations.</p>
+                <a href="#solutions" class="btn">See What I Build</a>
             </div>
-            <h1 class="text-5xl md:text-7xl font-bold tracking-tight mb-6">
-                Building <span class="text-gradient">Scalable</span><br>
-                Digital Solutions
-            </h1>
-            <p class="mt-4 max-w-2xl mx-auto text-xl text-gray-400 mb-10 h-8">
-                <span id="typewriter"></span><span class="cursor-blink text-primary">|</span>
-            </p>
-            <div class="flex justify-center gap-4">
-                <a href="#projects" class="px-8 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary text-white font-semibold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all transform hover:-translate-y-1">
-                    View My Work
-                </a>
-                <a href="#contact" class="px-8 py-3 rounded-lg glass text-white font-semibold hover:bg-white/10 transition-all transform hover:-translate-y-1">
-                    Contact Me
-                </a>
+        </header>
+
+        <section id="solutions" class="section-padding">
+            <h2>What are you looking to build today?</h2>
+            <p class="section-subtitle">Click a goal below to see how I can help your business.</p>
+            
+            <div class="solutions-container">
+                <div class="solution-buttons">
+                    <button class="sol-btn active" onclick="loadInlineSolution(event, 'hotel')"><i class="fas fa-utensils"></i> Hotel & Shop</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ecommerce')"><i class="fas fa-shopping-bag"></i> E-Commerce</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'portfolio')"><i class="fas fa-briefcase"></i> Portfolio</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'ai')"><i class="fas fa-robot"></i> AI Agents</button>
+                    <button class="sol-btn" onclick="loadInlineSolution(event, 'business')"><i class="fas fa-building"></i> Corporate</button>
+                </div>
+
+                <div class="solution-reveal" id="solution-display">
+                    <div class="solution-video-box">
+                        <video id="sol-video" autoplay loop muted playsinline src="assests/videos/hotel/hotel1.mp4"></video>
+                    </div>
+                    <div class="solution-text-box">
+                        <span class="solution-tag" id="sol-tag">SaaS Architecture</span>
+                        <h3 id="sol-title">Custom Business Management Dashboards</h3>
+                        <p id="sol-desc">Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.</p>
+                        <a href="https://wa.me/9137435654" target="_blank" class="btn" id="sol-wa"><i class="fab fa-whatsapp"></i> Let's Build This</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tech-stack" class="section-padding" style="background-color: #050505;">
+            <h2>Technical Capabilities</h2>
+            <p class="section-subtitle">Under the hood. The technologies and architectures I use to make it happen.</p>
+            <div class="service-grid">
+                <div class="service-card" onclick="openServiceDetails('fullstack')">
+                    <i class="fas fa-code"></i>
+                    <h3>Full-Stack Dev</h3>
+                    <p>Custom REST APIs, responsive UI/UX, and robust SQL/NoSQL databases.</p>
+                    <span class="click-text">View features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('saas')">
+                    <i class="fas fa-cloud"></i>
+                    <h3>SaaS Architecture</h3>
+                    <p>Multi-tenant systems, tiered billing, and secure role-based access control.</p>
+                    <span class="click-text">View features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('ecommerce')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>E-Commerce</h3>
+                    <p>Secure payment gateways (Stripe/Razorpay) and real-time inventory logic.</p>
+                    <span class="click-text">View features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('ai')">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Integration</h3>
+                    <p>OpenAI API integrations, custom NLP chatbots, and automated workflows.</p>
+                    <span class="click-text">View features &rarr;</span>
+                </div>
+                <div class="service-card" onclick="openServiceDetails('cybersecurity')">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Cybersecurity</h3>
+                    <p>OWASP Top 10 prevention, data encryption, and JWT secure endpoints.</p>
+                    <span class="click-text">View features &rarr;</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding">
+            <h2>Featured Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img bg-1"></div>
+                    <div class="project-info">
+                        <h3 style="color: var(--text-light); margin-bottom: 0.5rem;">AI-Powered SaaS Dashboard</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Analytics dashboard integrating OpenAI's API.</p>
+                        <div class="tags"><span>React</span><span>Node.js</span><span>AI API</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section-padding" style="background-color: #050505;">
+            <h2>Technical Blog</h2>
+            <p class="section-subtitle">Deep dive articles on software engineering architectures.</p>
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">ARCHITECTURE • 5 MIN READ</div>
+                        <h3 class="blog-title">Architecting Resilient E-Commerce Platforms</h3>
+                        <p class="blog-excerpt">A deep dive into the system design patterns required to handle high-traffic sales events without database bottlenecks.</p>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">SECURITY • 7 MIN READ</div>
+                        <h3 class="blog-title">Analyzing Common Webhook Vulnerabilities</h3>
+                        <p class="blog-excerpt">Exploring threat vectors in automated chatbot infrastructures and how to secure API gateways against injection attacks.</p>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
+                    </div>
+                </article>
+                <article class="blog-card">
+                    <div class="blog-content">
+                        <div class="blog-meta">AI INTEGRATION • 4 MIN READ</div>
+                        <h3 class="blog-title">Handling Meta's 2026 WhatsApp API Constraints</h3>
+                        <p class="blog-excerpt">How to bypass webhook failures and properly structure system prompts for strict enterprise-level AI chatbot compliance.</p>
+                        <a href="#" class="blog-link">Read Case Study &rarr;</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="about" class="section-padding">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; font-weight: 400;">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects.</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; text-align: left; margin-bottom: 3rem;">
+                    <div class="service-card" style="padding: 2rem;">
+                        <h3 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.2rem;"><i class="fas fa-graduation-cap" style="font-size:1.2rem; margin-bottom:0;"></i> Education</h3>
+                        <p style="margin-bottom: 0.5rem; color: var(--text-light); font-weight: 600;">Universal SkillTech University</p>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">B.Tech in Computer Science Engineering<br>2024 - 2028 | Second Year (4th Sem)<br>CGPA: 7.06</p>
+                    </div>
+                    <div class="service-card" style="padding: 2rem;">
+                        <h3 style="color: var(--text-light); margin-bottom: 1rem; font-size: 1.2rem;"><i class="fas fa-certificate" style="font-size:1.2rem; margin-bottom:0;"></i> Certifications</h3>
+                        <ul style="list-style: none; color: var(--text-muted); font-size: 0.95rem; line-height: 2.2;">
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fas fa-shield-alt" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Ethical Hacking - Cisco
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fab fa-python" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Python Basics - DataCamp
+                            </li>
+                            <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <i class="fas fa-brain" style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 0; width: 20px; text-align: center;"></i> Python with AI - SkillLevel
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div>
+                    <button onclick="openResumeModal()" class="btn btn-outline">View Full Resume</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section-padding" style="background-color: #050505;">
+            <h2>Let's Connect</h2>
+            <p class="section-subtitle">Reach out through any of the platforms below.</p>
+            <div class="social-grid">
+                <a href="https://wa.me/9137435654" target="_blank" class="social-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=jaymore2156@gmail.com" target="_blank" class="social-btn email"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://github.com/JayMore05" target="_blank" class="social-btn github"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" class="social-btn linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+            </div>
+        </section>
+    </div>
+
+    <div id="service-detail-view" class="hidden">
+        <div class="service-header">
+            <i id="detail-icon" class="fas fa-cog"></i>
+            <h1 id="detail-title" style="color: var(--text-light);">Service Title</h1>
+            <p id="detail-desc">Service Description</p>
+        </div>
+
+        <div class="examples-container">
+            <div class="examples-header">
+                <h2 style="font-size: 2rem;">Real-World Solutions</h2>
+            </div>
+            <div class="examples-grid" id="detail-examples-list"></div>
+        </div>
+
+        <div class="features-container">
+            <h2 style="font-size: 1.8rem; margin-bottom: 3rem;">Technical Implementation</h2>
+            <div class="features-grid" id="detail-features-list"></div>
+            
+            <div style="text-align: center; margin-top: 5rem;">
+                <button onclick="showMainViewAndScroll('tech-stack')" class="btn btn-outline"><i class="fas fa-arrow-left"></i> Back</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="example-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <i class="fas fa-times modal-close" onclick="closeExampleModal()"></i>
+            <div class="modal-img-container" id="modal-img"></div>
+            <h3 class="modal-title" id="modal-title">Example Title</h3>
+            <p class="modal-desc" id="modal-desc">Detailed explanation goes here...</p>
+            <a href="#" target="_blank" class="btn" id="modal-wa-btn" style="width: 100%;">Discuss Project</a>
+        </div>
+    </div>
+
+    <div id="resume-modal" class="modal-overlay hidden no-select">
+        <div class="modal-content" style="max-width: 800px; text-align: left;">
+            <i class="fas fa-times modal-close" onclick="closeResumeModal()"></i>
+            <h3 class="modal-title" style="text-align: center; margin-bottom: 0.5rem; font-size: 2rem;">Jay More</h3>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 0.9rem;">Mumbai, Maharashtra | 9137435654 | jaymore2156@gmail.com</p>
+            
+            <div style="background-color: #000; padding: 2rem; border-radius: 16px; border: 1px solid var(--border-color); color: var(--text-light); line-height: 1.8; max-height: 50vh; overflow-y: auto;">
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Professional Summary</h4>
+                <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);">Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. Seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.</p>
+
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Education</h4>
+                <p style="margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);"><strong>B.Tech in Computer Science Engineering</strong><br>Universal SkillTech University (2024-2028)<br>Second Year (4th Semester) | CGPA: 7.06</p>
+
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Core Skills</h4>
+                <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; font-size: 0.9rem; color: var(--text-muted);">
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong style="color: var(--text-light);">Analytical & Technical:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
+                            <li>Python, C (programming fundamentals)</li>
+                            <li>Logical thinking & problem-solving</li>
+                            <li>Basic data handling and analysis</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <strong style="color: var(--text-light);">Professional & Consulting:</strong>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.8rem; line-height: 1.8;">
+                            <li>Research and information gathering</li>
+                            <li>Clear written and verbal communication</li>
+                            <li>Team collaboration and time management</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4 style="color: var(--text-light); border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; font-size: 1.1rem;">Certifications & Strengths</h4>
+                <ul style="margin-left: 1.5rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.8;">
+                    <li>Ethical Hacking - Cisco (security fundamentals)</li>
+                    <li>Python Basics - DataCamp</li>
+                    <li>Python with AI - SkillLevel</li>
+                    <li>Quick learner with adaptability to structured environments</li>
+                </ul>
             </div>
             
-            <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-800 pt-8">
-                <div>
-                    <div class="text-3xl font-bold text-white">4th</div>
-                    <div class="text-sm text-gray-500 mt-1">Semester CSE</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-white">7.06</div>
-                    <div class="text-sm text-gray-500 mt-1">Current CGPA</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-white">3+</div>
-                    <div class="text-sm text-gray-500 mt-1">Certifications</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-white">100%</div>
-                    <div class="text-sm text-gray-500 mt-1">Commitment</div>
-                </div>
+            <div style="text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 2rem; opacity: 0.7;">
+                <i class="fas fa-lock"></i> Protected Document
             </div>
         </div>
-        
-        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <a href="#about" class="text-gray-500 hover:text-white transition-colors">
-                <i class="fas fa-chevron-down text-2xl"></i>
-            </a>
-        </div>
-    </section>
+    </div>
 
-    <section id="about" class="py-24 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="reveal">
-                    <h2 class="text-3xl md:text-4xl font-bold mb-6">
-                        About <span class="text-gradient">Me</span>
-                    </h2>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-6">
-                        Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. I specialize in bridging the gap between complex technical architectures and business value.
-                    </p>
-                    <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        Currently seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.
-                    </p>
-                    
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
-                                <i class="fas fa-graduation-cap text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-white">Universal SkillTech University</div>
-                                <div class="text-sm text-gray-500">B.Tech CSE (2024 - 2028) | 2nd Year (4th Sem)</div>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <div class="font-semibold text-white">Location</div>
-                                <div class="text-sm text-gray-500">Mumbai, Maharashtra</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="relative reveal delay-200">
-                    <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-2xl opacity-20 transform rotate-3"></div>
-                    <div class="relative glass-card p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold mb-6 text-white">Certifications & Strengths</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-default group">
-                                <div class="flex items-center gap-4">
-                                    <i class="fab fa-python text-2xl text-yellow-400 group-hover:scale-110 transition-transform"></i>
-                                    <div>
-                                        <div class="font-medium text-white">Python with AI</div>
-                                        <div class="text-xs text-gray-500">SkillLevel</div>
-                                    </div>
-                                </div>
-                                <i class="fas fa-check-circle text-primary"></i>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-default group">
-                                <div class="flex items-center gap-4">
-                                    <i class="fab fa-python text-2xl text-blue-400 group-hover:scale-110 transition-transform"></i>
-                                    <div>
-                                        <div class="font-medium text-white">Python Basics</div>
-                                        <div class="text-xs text-gray-500">DataCamp</div>
-                                    </div>
-                                </div>
-                                <i class="fas fa-check-circle text-primary"></i>
-                            </div>
-                            <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-default group">
-                                <div class="flex items-center gap-4">
-                                    <i class="fas fa-shield-alt text-2xl text-red-400 group-hover:scale-110 transition-transform"></i>
-                                    <div>
-                                        <div class="font-medium text-white">Ethical Hacking</div>
-                                        <div class="text-xs text-gray-500">Cisco</div>
-                                    </div>
-                                </div>
-                                <i class="fas fa-check-circle text-primary"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="chatbot-container">
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chat-header">
+                <span>Jay's Assistant</span>
+                <i class="fas fa-times" id="close-chat"></i>
+            </div>
+            <div class="chat-body" id="chat-body"></div>
+            <div class="chat-footer">
+                <input type="text" id="chat-input" placeholder="Type a message...">
+                <button id="send-btn"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
-    </section>
+        <button class="chat-toggle" id="chat-toggle">
+            <i class="fas fa-robot"></i>
+        </button>
+    </div>
 
-    <section id="services" class="py-24 bg-darker/50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-gradient">Capabilities</span></h2>
-                <p class="text-gray-400 max-w-2xl mx-auto">Under the hood. The technologies and architectures I use to make it happen.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="glass-card p-6 rounded-xl reveal">
-                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
-                        <i class="fas fa-code text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Full-Stack Dev</h3>
-                    <p class="text-gray-400 text-sm mb-4">Custom REST APIs, responsive UI/UX, and robust SQL/NoSQL databases.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Python</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">C</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">React</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal delay-100">
-                    <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
-                        <i class="fas fa-cloud text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">SaaS Architecture</h3>
-                    <p class="text-gray-400 text-sm mb-4">Multi-tenant systems, tiered billing, and secure role-based access control.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Multi-tenancy</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">RBAC</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal delay-200">
-                    <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">E-Commerce</h3>
-                    <p class="text-gray-400 text-sm mb-4">Secure payment gateways (Stripe/Razorpay) and real-time inventory logic.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Stripe</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Razorpay</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal">
-                    <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 mb-4">
-                        <i class="fas fa-robot text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">AI Integration</h3>
-                    <p class="text-gray-400 text-sm mb-4">OpenAI API integrations, custom NLP chatbots, and automated workflows.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">OpenAI</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">NLP</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal delay-100">
-                    <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 mb-4">
-                        <i class="fas fa-shield-alt text-xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2">Cybersecurity</h3>
-                    <p class="text-gray-400 text-sm mb-4">OWASP Top 10 prevention, data encryption, and JWT secure endpoints.</p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">OWASP</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">JWT</span>
-                    </div>
-                </div>
-
-                <div class="glass-card p-6 rounded-xl reveal delay-200 flex flex-col justify-center items-center text-center border-dashed border-2 border-gray-700 hover:border-primary/50 cursor-pointer" onclick="window.location.href='#contact'">
-                    <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 mb-4 group-hover:bg-primary/20">
-                        <i class="fas fa-plus text-xl"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-300">Custom Project?</h3>
-                    <p class="text-gray-500 text-sm mt-2">Let's discuss your specific requirements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-bold mb-4">What are you looking to <span class="text-gradient">build</span> today?</h2>
-                <p class="text-gray-400">Click a goal below to see how I can help your business.</p>
-            </div>
-
-            <div class="glass p-8 rounded-2xl reveal">
-                <div class="grid md:grid-cols-3 gap-4 mb-8">
-                    <button onclick="showGoal('hotel')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group active-goal" id="btn-hotel">
-                        <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-utensils text-primary text-xl"></i>
-                            <i class="fas fa-chevron-right text-gray-600 group-hover:text-primary transition-colors"></i>
-                        </div>
-                        <div class="font-semibold text-white">Hotel & Shop Dashboard</div>
-                    </button>
-                    
-                    <button onclick="showGoal('ecommerce')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-ecommerce">
-                        <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-shopping-bag text-secondary text-xl"></i>
-                            <i class="fas fa-chevron-right text-gray-600 group-hover:text-secondary transition-colors"></i>
-                        </div>
-                        <div class="font-semibold text-white">E-Commerce Ecosystem</div>
-                    </button>
-
-                    <button onclick="showGoal('ai')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-ai">
-                        <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-robot text-emerald-400 text-xl"></i>
-                            <i class="fas fa-chevron-right text-gray-600 group-hover:text-emerald-400 transition-colors"></i>
-                        </div>
-                        <div class="font-semibold text-white">Automated AI Agents</div>
-                    </button>
-                </div>
-
-                <div id="goal-content" class="bg-black/20 rounded-xl p-6 border border-white/5 min-h-[160px] transition-all duration-500">
-                    </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
-                <div>
-                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-gradient">Projects</span></h2>
-                    <p class="text-gray-400">Selected works showcasing architecture and design.</p>
-                </div>
-                <a href="https://github.com/JayMore05" target="_blank" class="hidden md:inline-flex items-center text-primary hover:text-white transition-colors mt-4 md:mt-0">
-                    View Github <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="group relative rounded-2xl overflow-hidden reveal">
-                    <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/80 to-transparent z-10"></div>
-                    <div class="h-80 w-full bg-gray-900 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-700">
-                            <i class="fas fa-robot text-6xl opacity-20 group-hover:scale-110 transition-transform duration-700"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 z-20 flex gap-2">
-                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-primary border border-primary/20">React</span>
-                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-secondary border border-secondary/20">Node.js</span>
-                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-emerald-400 border border-emerald-400/20">AI API</span>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
-                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">AI-Powered SaaS Dashboard</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Analytics dashboard integrating OpenAI's API for intelligent data insights and automated reporting workflows.</p>
-                        <a href="https://github.com/JayMore05" target="_blank" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
-                            View Project <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="group relative rounded-2xl overflow-hidden reveal delay-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/80 to-transparent z-10"></div>
-                    <div class="h-80 w-full bg-gray-900 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-700">
-                            <i class="fas fa-utensils text-6xl opacity-20 group-hover:scale-110 transition-transform duration-700"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 z-20 flex gap-2">
-                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-accent border border-accent/20">Full-Stack SaaS</span>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
-                        <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Restaurant Management System</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Custom software where waiters take orders on tablets, kitchens get instant tickets, and owners track profits securely from mobile.</p>
-                        <a href="https://github.com/JayMore05" target="_blank" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
-                            View Project <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="blog" class="py-24 bg-darker/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical <span class="text-gradient">Blog</span></h2>
-                <p class="text-gray-400">Deep dive articles on software engineering architectures.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal">
-                    <div class="h-48 bg-gray-900 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-purple-900/50 group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="px-2 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">Architecture</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-xs text-gray-500 mb-2">5 MIN READ</div>
-                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-primary transition-colors">Architecting Resilient E-Commerce Platforms</h3>
-                        <p class="text-gray-400 text-sm mb-4">System design patterns required to handle high-traffic sales events without database bottlenecks.</p>
-                        <div class="flex items-center text-primary text-sm font-medium">
-                            Read Case Study <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal delay-100">
-                    <div class="h-48 bg-gray-900 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-red-900/50 to-orange-900/50 group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs font-bold rounded uppercase tracking-wider">Security</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-xs text-gray-500 mb-2">7 MIN READ</div>
-                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-primary transition-colors">Analyzing Common Webhook Vulnerabilities</h3>
-                        <p class="text-gray-400 text-sm mb-4">Exploring threat vectors in automated chatbot infrastructures and securing API gateways.</p>
-                        <div class="flex items-center text-primary text-sm font-medium">
-                            Read Case Study <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal delay-200">
-                    <div class="h-48 bg-gray-900 relative overflow-hidden">
-                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-teal-900/50 group-hover:scale-110 transition-transform duration-500"></div>
-                        <div class="absolute bottom-4 left-4">
-                            <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded uppercase tracking-wider">AI Integration</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <div class="text-xs text-gray-500 mb-2">4 MIN READ</div>
-                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-primary transition-colors">Handling Meta's 2026 WhatsApp API Constraints</h3>
-                        <p class="text-gray-400 text-sm mb-4">How to bypass webhook failures and structure system prompts for enterprise-level AI compliance.</p>
-                        <div class="flex items-center text-primary text-sm font-medium">
-                            Read Case Study <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-24 relative">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's <span class="text-gradient">Connect</span></h2>
-            <p class="text-gray-400 text-lg mb-12">Have a project in mind or want to discuss consulting opportunities? Reach out.</p>
-            
-            <div class="grid md:grid-cols-4 gap-4 mb-12">
-                <a href="mailto:jaymore2156@gmail.com" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-primary/50">
-                    <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-envelope text-xl"></i>
-                    </div>
-                    <div class="font-medium text-white text-sm">Email</div>
-                </a>
-                
-                <a href="https://wa.me/9137435654" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-accent/50">
-                    <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                    </div>
-                    <div class="font-medium text-white text-sm">WhatsApp</div>
-                </a>
-                
-                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-secondary/50">
-                    <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-linkedin text-xl"></i>
-                    </div>
-                    <div class="font-medium text-white text-sm">LinkedIn</div>
-                </a>
-
-                <a href="https://github.com/JayMore05" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-gray-400/50">
-                    <div class="w-12 h-12 rounded-full bg-gray-500/10 flex items-center justify-center text-gray-300 mb-4 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-github text-xl"></i>
-                    </div>
-                    <div class="font-medium text-white text-sm">GitHub</div>
-                </a>
-            </div>
-
-            <div class="glass p-8 rounded-2xl text-left max-w-2xl mx-auto">
-                <form action="mailto:jaymore2156@gmail.com" method="post" enctype="text/plain" class="space-y-4">
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-1">Name</label>
-                            <input type="text" name="name" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="John Doe">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-medium text-gray-400 mb-1">Email</label>
-                            <input type="email" name="email" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="john@example.com">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-400 mb-1">Message</label>
-                        <textarea name="message" rows="4" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Tell me about your project..."></textarea>
-                    </div>
-                    <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-1">
-                        Send via Email Client
-                    </button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="border-t border-gray-800 py-8 bg-darker">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="font-mono text-xl font-bold text-white mb-4 md:mb-0">
-                &lt;JayMore /&gt;
-            </div>
-            <div class="text-gray-500 text-sm">
-                &copy; 2026 Jay More. Architected in Mumbai. All rights reserved.
-            </div>
-            <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="https://github.com/JayMore05" target="_blank" aria-label="GitHub Profile" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" aria-label="LinkedIn Profile" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 Jay More. Architected in Mumbai.</p>
     </footer>
 
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.6/bundled/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2/tsparticles.bundle.min.js"></script>
+
     <script>
-        // --- Typewriter Effect ---
-        const words = ["SaaS Platforms.", "Secure APIs.", "AI Integrations.", "Business Solutions."];
-        let i = 0;
-        let timer;
+        // --- Mobile Hamburger Menu Logic ---
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links-list');
 
-        function typeWriter() {
-            const heading = document.getElementById("typewriter");
-            const word = words[i];
-            let currentTxt = heading.innerText;
-            
-            if (!heading.classList.contains("deleting")) {
-                heading.innerText = word.substring(0, currentTxt.length + 1);
-                if (heading.innerText === word) {
-                    heading.classList.add("deleting");
-                    setTimeout(typeWriter, 2000); 
-                    return;
-                }
-            } else {
-                heading.innerText = word.substring(0, currentTxt.length - 1);
-                if (heading.innerText === "") {
-                    heading.classList.remove("deleting");
-                    i = (i + 1) % words.length;
-                }
-            }
-            setTimeout(typeWriter, heading.classList.contains("deleting") ? 50 : 100);
-        }
-        setTimeout(typeWriter, 1000);
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('nav-active');
+            burger.classList.toggle('toggle');
+        });
 
-        // --- Interactive Goal Builder ---
-        const goals = {
-            hotel: {
-                title: "Custom Business Management Dashboards",
-                desc: "Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.",
-                waLink: "Hi Jay, I want to build a hotel/shop management system."
-            },
-            ecommerce: {
-                title: "High-Conversion Online Stores",
-                desc: "Sell your physical or digital products 24/7. I build blazing-fast online stores complete with size selections, shopping carts, secure payment gateways, and automated email receipts.",
-                waLink: "Hi Jay, I want to build an online store."
-            },
-            ai: {
-                title: "Automated AI Customer Support",
-                desc: "Train an AI on your company's rules. When customers message your website at 2 AM, the AI automatically answers their questions and takes their orders.",
-                waLink: "Hi Jay, I want to integrate AI."
-            }
-        };
-
-        function showGoal(key) {
-            document.querySelectorAll('.goal-btn').forEach(btn => {
-                btn.classList.remove('bg-primary/20', 'border-primary/50');
-                btn.classList.add('bg-white/5', 'border-transparent');
-            });
-            const activeBtn = document.getElementById(`btn-${key}`);
-            activeBtn.classList.remove('bg-white/5', 'border-transparent');
-            activeBtn.classList.add('bg-primary/20', 'border-primary/50');
-
-            const contentDiv = document.getElementById('goal-content');
-            contentDiv.style.opacity = '0';
-            
-            setTimeout(() => {
-                const data = goals[key];
-                const waUrl = `https://wa.me/9137435654?text=${encodeURIComponent(data.waLink)}`;
-                
-                contentDiv.innerHTML = `
-                    <h3 class="text-2xl font-bold text-white mb-3">${data.title}</h3>
-                    <p class="text-gray-300 mb-6 leading-relaxed">${data.desc}</p>
-                    <div class="mt-6">
-                        <a href="${waUrl}" target="_blank" class="text-white font-medium hover:text-primary transition-colors flex items-center w-max">
-                            Let's Build This on WhatsApp <i class="fab fa-whatsapp ml-2"></i>
-                        </a>
-                    </div>
-                `;
-                contentDiv.style.opacity = '1';
-            }, 300);
-        }
-
-        // Initialize goal builder
-        showGoal('hotel');
-
-        // --- Mobile Menu ---
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // --- Scroll Reveal Animation ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+        const navLinksArr = document.querySelectorAll('.nav-links li a');
+        navLinksArr.forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('nav-active')) {
+                    nav.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
                 }
             });
-        }, { threshold: 0.1 });
-        revealElements.forEach(el => revealObserver.observe(el));
+        });
 
         // --- Navbar Scroll Effect ---
         window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('glass', 'shadow-lg');
-            } else {
-                nav.classList.remove('glass', 'shadow-lg');
-            }
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+            else navbar.style.boxShadow = 'none';
         });
 
-        // --- Canvas Network Animation ---
-        const canvas = document.getElementById('networkCanvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
+        // --- LOCAL VIDEOS PLAYLIST DATABASE ---
+        const videoLibrary = {
+            hotel: ["assests/videos/hotel/hotel1.mp4"],
+            ecommerce: ["assests/videos/ecommerce/ecommerce1.mp4"],
+            portfolio: ["assests/videos/portfolio/portfolio1.mp4"],
+            ai: ["assests/videos/ai/ai1.mp4"],
+            business: ["assests/videos/business/business1.mp4"]
+        };
 
-        function resize() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-            canvas.width = width;
-            canvas.height = height;
-        }
+        const inlineSolutionsData = {
+            hotel: { tag: "SaaS Architecture", title: "Custom Business Management Dashboards", desc: "Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.", waMessage: "Hi Jay, I want to build a hotel/shop management system." },
+            ecommerce: { tag: "E-Commerce Ecosystem", title: "High-Conversion Online Stores", desc: "Sell your physical or digital products 24/7. I build blazing-fast online stores complete with size selections, shopping carts, secure payment gateways, and automated email receipts.", waMessage: "Hi Jay, I want to build an online store." },
+            portfolio: { tag: "Full-Stack Web App", title: "Standout Personal Portfolios", desc: "Get hired faster with a digital resume. Showcase your past work in a beautiful gallery, allow recruiters to download your CV, and receive direct emails via a custom contact form.", waMessage: "Hi Jay, I want to build a personal portfolio." },
+            ai: { tag: "AI & Chatbots", title: "Automated AI Customer Support", desc: "Train an AI on your company's rules. When customers message your website at 2 AM, the AI automatically answers their questions and takes their orders.", waMessage: "Hi Jay, I want to integrate AI." },
+            business: { tag: "Corporate Web Design", title: "Professional Corporate Websites", desc: "Establish trust with a high-speed, SEO-optimized landing page. Capture client leads, explain your company vision, and integrate booking calendars.", waMessage: "Hi Jay, I want to build a business website." }
+        };
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.5;
-                this.vy = (Math.random() - 0.5) * 0.5;
-                this.size = Math.random() * 2;
+        const deepDiveData = {
+            fullstack: {
+                title: "Full-Stack Websites", icon: "fa-code", desc: "Complete custom websites built from scratch to represent your brand and handle your data.",
+                examples: [
+                    { title: "Personal Portfolios", desc: "Sleek, responsive sites to showcase work.", detailedDesc: "A digital resume/portfolio perfect for freelancers, artists, and job seekers. It features a fast-loading gallery of your past projects, a downloadable resume button, and a contact form." },
+                    { title: "Service Booking Sites", desc: "Websites where clients can book appointments.", detailedDesc: "Ideal for clinics, salons, or consultants. Customers view your available time slots on a calendar UI and book themselves. The backend prevents double-booking." },
+                    { title: "Corporate Landing Pages", desc: "High-speed websites for businesses.", detailedDesc: "A multi-page corporate site designed to convert visitors into clients. Features SEO optimization, clear call-to-actions, and newsletter sign-up integrations." },
+                    { title: "Real Estate Listings", desc: "Dynamic properties portal with search.", detailedDesc: "A property management site where realtors can upload new houses via an admin panel. Visitors can filter homes by price, location, and bedrooms." },
+                    { title: "Educational Portals", desc: "E-learning platforms for courses.", detailedDesc: "A custom platform for teachers to upload video lessons, provide PDF notes, and track student progress. Students get personal dashboards." }
+                ],
+                items: ["Custom RESTful API Development", "Responsive Mobile-First UI/UX Design", "Robust Database Architecture", "Progressive Web App (PWA)", "Real-Time Data Syncing", "CMS Integrations", "Performance Optimization", "Legacy Code Refactoring", "Cloud Deployment", "Version Control CI/CD"]
+            },
+            saas: {
+                title: "SaaS Architecture", icon: "fa-cloud", desc: "Powerful software platforms that run in the cloud, allowing multiple users to manage their business.",
+                examples: [
+                    { title: "Hotel/Restaurant Management", desc: "Dashboard to track orders and bills.", detailedDesc: "A POS and management system. Waiters input table orders via tablets, instantly appearing on a kitchen display. Managers view daily profits on an admin dashboard." },
+                    { title: "Employee HR Portals", desc: "Internal software to track attendance.", detailedDesc: "A centralized cloud application for businesses to manage their workforce. Employees clock hours, HR automatically calculates monthly payrolls." },
+                    { title: "Gym & Class Subscriptions", desc: "Manage recurring payments.", detailedDesc: "Gym owners track memberships while members log in to book fitness classes. The software handles automatic monthly credit card billing." },
+                    { title: "Invoicing & Accounting", desc: "Generate bills and track expenses.", detailedDesc: "A B2B SaaS tool to create professional invoices, send them to clients, track payments, and scan receipts to log business expenses." },
+                    { title: "CRM (Customer Relations)", desc: "Track sales leads and communication.", detailedDesc: "Sales teams track leads through a drag-and-drop pipeline, schedule follow-up reminders, and store client contact histories securely." }
+                ],
+                items: ["Multi-Tenant Architecture", "Tiered Subscription Billing", "Secure User Authentication", "Admin Dashboards", "Automated User Onboarding", "API Rate Limiting", "Data Isolation", "Automated Daily Backups", "Third-Party Integrations", "High-Availability Load Balancing"]
+            },
+            ecommerce: {
+                title: "E-Commerce Ecosystems", icon: "fa-shopping-cart", desc: "Custom online stores designed to make buying easy and inventory tracking simple.",
+                examples: [
+                    { title: "Clothing Boutiques", desc: "Visual storefront with categorized clothing.", detailedDesc: "A mobile-friendly shop featuring high-quality image zoom, color/size variant selection, and a smooth cart system that remembers items." },
+                    { title: "Digital Product Hubs", desc: "Secure platform to sell software.", detailedDesc: "Optimized for instant downloads. The system automatically generates a secure, expiring download link sent to the customer's email, preventing piracy." },
+                    { title: "Local Grocery Delivery", desc: "App to order groceries online.", detailedDesc: "Calculates delivery fees based on distance. Includes real-time inventory—if someone buys the last apple, it immediately says 'Out of Stock'." },
+                    { title: "Subscription Boxes", desc: "Automated monthly recurring orders.", detailedDesc: "Customers sign up once to receive a box every month. The system automatically bills their card and generates a shipping label for the warehouse." },
+                    { title: "Multi-Vendor Marketplaces", desc: "A site where others sell on your platform.", detailedDesc: "Independent sellers create accounts, upload products, and manage sales. You automatically take a commission cut from every transaction via Stripe." }
+                ],
+                items: ["Secure Payment Gateways", "Real-Time Inventory Tracking", "Advanced Search & Filters", "Dynamic Promo Code Logic", "Abandoned Cart Recovery", "Customer Wishlists", "Automated Order Tracking", "Frictionless Checkout", "Dropshipping Integrations", "Technical SEO"]
+            },
+            ai: {
+                title: "AI & Chatbot Integration", icon: "fa-robot", desc: "Smart automation tools that act like digital employees, working 24/7.",
+                examples: [
+                    { title: "WhatsApp Ordering Bots", desc: "AI takes food orders via WhatsApp.", detailedDesc: "Customers message your business on WhatsApp. The AI greets them, shows the menu, takes their order, calculates the total, and sends it to the kitchen." },
+                    { title: "24/7 Customer Support", desc: "Widget trained on company FAQs.", detailedDesc: "When a user asks a specific question on your website at 3 AM, the bot reads your manuals and gives a perfect, conversational answer instantly." },
+                    { title: "Automated Lead Generators", desc: "AI qualifies potential sales leads.", detailedDesc: "When a user fills out a contact form, the AI researches their company, drafts a personalized introductory email, and saves it in your drafts." },
+                    { title: "Resume Screening Bots", desc: "AI helps HR sort applications.", detailedDesc: "Reads uploaded PDFs, extracts relevant skills, scores the candidate against the job description, and creates a shortlist for human review." },
+                    { title: "Content & SEO Assistants", desc: "Internal tools to generate marketing copy.", detailedDesc: "A private dashboard. Type in a product name, and the AI generates Instagram captions, a blog outline, and SEO-optimized website descriptions." }
+                ],
+                items: ["OpenAI API Integration", "Natural Language Processing", "Automated Support Agents", "AI Lead Generation", "Sentiment Analysis", "Context-Aware Memory", "Vector Databases", "Text-to-Speech", "Automated Data Extraction", "Custom AI Dashboards"]
+            },
+            cybersecurity: {
+                title: "Cybersecurity First", icon: "fa-shield-alt", desc: "Protecting your website and sensitive information from hackers and data leaks.",
+                examples: [
+                    { title: "Payment Data Protection", desc: "Ensuring credit cards are unstealable.", detailedDesc: "Strict PCI-DSS compliance. Payment data is tokenized and encrypted before leaving the user's browser, meaning hackers get zero credit card numbers." },
+                    { title: "Medical/Client Privacy", desc: "Securing portals with sensitive files.", detailedDesc: "HIPAA-compliant database architectures. Patient data is encrypted, and access logs track exactly which employee viewed which file." },
+                    { title: "Spam & Bot Prevention", desc: "Stopping fake accounts and bots.", detailedDesc: "Implementation of invisible reCAPTCHA and behavioral analysis to ensure only real humans can create accounts or submit forms." },
+                    { title: "Secure File Sharing", desc: "Encrypted internal document transfers.", detailedDesc: "A portal where sensitive files are encrypted. Employees generate self-destructing download links to safely share files with contractors." },
+                    { title: "Vulnerability Audits", desc: "Testing systems for weaknesses.", detailedDesc: "We act as ethical hackers, running penetration tests to find outdated code, SQL injection points, and weak passwords before real hackers do." }
+                ],
+                items: ["OWASP Top 10 Prevention", "Data Encryption (At Rest/Transit)", "Two-Factor Authentication (2FA)", "XSS Protection", "SQL Injection Defense", "SSL/TLS Implementation", "Role-Based Access Control", "DDoS Mitigation", "Secure API Authentication", "Automated Patching"]
             }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(14, 165, 233, 0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
+        };
 
-        function initParticles() {
-            particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 100);
-            for (let i = 0; i < particleCount; i++) {
-                particles.push(new Particle());
-            }
-        }
+        const mainView = document.getElementById('main-view');
+        const detailView = document.getElementById('service-detail-view');
 
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
+        function loadInlineSolution(e, key) {
+            document.querySelectorAll('.sol-btn').forEach(btn => btn.classList.remove('active'));
+            if (e && e.currentTarget) {
+                e.currentTarget.classList.add('active');
+            }
+
+            const displayBox = document.getElementById('solution-display');
+            displayBox.classList.add('fade');
             
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
+            setTimeout(() => {
+                const data = inlineSolutionsData[key];
+                document.getElementById('sol-tag').textContent = data.tag;
+                document.getElementById('sol-title').textContent = data.title;
+                document.getElementById('sol-desc').textContent = data.desc;
                 
-                for (let j = i; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(14, 165, 233, ${0.1 - distance/1500})`;
-                        ctx.lineWidth = 1;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
+                const vids = videoLibrary[key];
+                const randomVid = vids[Math.floor(Math.random() * vids.length)];
+                
+                const videoElement = document.getElementById('sol-video');
+                videoElement.src = randomVid;
+                videoElement.load();
+                videoElement.play();
+                
+                document.getElementById('sol-wa').href = `https://wa.me/9137435654?text=${encodeURIComponent(data.waMessage)}`;
+                displayBox.classList.remove('fade');
+            }, 300);
         }
 
-        window.addEventListener('resize', () => {
-            resize();
-            initParticles();
+        function openServiceDetails(serviceId) {
+            const data = deepDiveData[serviceId];
+            if (!data) return;
+            
+            document.getElementById('navbar').classList.add('hide-logo');
+            
+            document.getElementById('detail-title').textContent = data.title;
+            document.getElementById('detail-desc').textContent = data.desc;
+            document.getElementById('detail-icon').className = `fas ${data.icon}`;
+            const examplesList = document.getElementById('detail-examples-list');
+            examplesList.innerHTML = '';
+            data.examples.forEach((ex, index) => {
+                const div = document.createElement('div');
+                div.className = 'example-card';
+                div.onclick = () => openExampleModal(serviceId, index);
+                div.innerHTML = `<h4>${ex.title}</h4><p>${ex.desc}</p><span class="click-hint"><i class="fas fa-arrow-right"></i> View Details</span>`;
+                examplesList.appendChild(div);
+            });
+            const featuresList = document.getElementById('detail-features-list');
+            featuresList.innerHTML = ''; 
+            data.items.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'feature-item';
+                div.innerHTML = `<i class="fas fa-check-circle"></i> <span>${item}</span>`;
+                featuresList.appendChild(div);
+            });
+            mainView.classList.add('hidden');
+            detailView.classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function showMainView() {
+            document.getElementById('navbar').classList.remove('hide-logo');
+            
+            detailView.classList.add('hidden');
+            mainView.classList.remove('hidden');
+        }
+
+        function showMainViewAndScroll(sectionId) { 
+            showMainView(); 
+            if (nav.classList.contains('nav-active')) {
+                nav.classList.remove('nav-active');
+                burger.classList.remove('toggle');
+            }
+            setTimeout(() => {
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 50); 
+        }
+
+        // Modal Logic
+        function openExampleModal(serviceId, exampleIndex) {
+            const ex = deepDiveData[serviceId].examples[exampleIndex];
+            document.getElementById('modal-title').textContent = ex.title;
+            document.getElementById('modal-desc').textContent = ex.detailedDesc;
+            document.getElementById('modal-img').style.backgroundImage =
+                `url('https://placehold.co/800x400/1e293b/ffffff?text=${encodeURIComponent(ex.title.split(' ')[0] + " Demo")}')`;
+            
+            const waText = encodeURIComponent(`Hi Jay, I am interested in building a solution like: ${ex.title}`);
+            document.getElementById('modal-wa-btn').href = `https://wa.me/9137435654?text=${waText}`;
+
+            document.getElementById('example-modal').classList.remove('hidden');
+        }
+
+        function closeExampleModal() {
+            document.getElementById('example-modal').classList.add('hidden');
+        }
+
+        document.getElementById('example-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeExampleModal();
         });
 
-        resize();
-        initParticles();
-        animate();
+        // --- PROTECTED RESUME LOGIC ---
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+            document.addEventListener('contextmenu', blockContext);
+            document.addEventListener('keydown', blockKeys);
+        }
+
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+            document.removeEventListener('contextmenu', blockContext);
+            document.removeEventListener('keydown', blockKeys);
+        }
+
+        function blockContext(e) { e.preventDefault(); }
+
+        function blockKeys(e) {
+            if (
+                e.key === 'PrintScreen' || 
+                (e.ctrlKey && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'P' || e.key === 'S' || e.key === 'C')) ||
+                (e.metaKey && (e.key === 'p' || e.key === 's' || e.key === 'c' || e.key === 'P' || e.key === 'S' || e.key === 'C' || e.shiftKey))
+            ) {
+                e.preventDefault();
+                alert("Screenshots and printing are disabled for this document.");
+            }
+        }
+
+        // --- DIAGNOSTIC CONSULTANT CHATBOT LOGIC ---
+        const chatToggle = document.getElementById('chat-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const closeChat = document.getElementById('close-chat');
+        const sendBtn = document.getElementById('send-btn');
+        const chatInput = document.getElementById('chat-input');
+        const chatBody = document.getElementById('chat-body');
+        let chatInitialized = false;
+
+        /* PERFECT JAVASCRIPT LOGIC TO HIDE/SHOW WITHOUT BREAKING CSS */
+        chatToggle.addEventListener('click', () => { 
+            chatbotWindow.style.display = 'flex'; 
+            chatToggle.style.display = 'none'; 
+            if (!chatInitialized) {
+                startDiagnosticFlow();
+                chatInitialized = true;
+            }
+        });
+        
+        closeChat.addEventListener('click', () => { 
+            chatbotWindow.style.display = 'none'; 
+            chatToggle.style.display = 'flex'; 
+        });
+
+        function startDiagnosticFlow() {
+            addMessageToChat('bot-message', "Hi! I'm Jay's assistant. To help point you in the right direction, which technical capability are you looking for?");
+            
+            setTimeout(() => {
+                showOptions([
+                    { text: "Full-Stack Dev", action: "fullstack", step: 1 },
+                    { text: "SaaS Architecture", action: "saas", step: 1 },
+                    { text: "E-Commerce", action: "ecommerce", step: 1 },
+                    { text: "AI Integration", action: "ai", step: 1 },
+                    { text: "Cybersecurity", action: "cybersecurity", step: 1 }
+                ]);
+            }, 500);
+        }
+
+        function showOptions(options) {
+            const optionsDiv = document.createElement('div');
+            optionsDiv.className = 'chat-options';
+            optionsDiv.id = 'current-options';
+
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'chat-opt-btn';
+                btn.innerHTML = `<i class="fas fa-arrow-right" style="font-size:0.8em; opacity:0.7"></i> ${opt.text}`;
+                btn.onclick = () => handleOptionSelection(opt.text, opt.action, opt.step, opt.parentCategory);
+                optionsDiv.appendChild(btn);
+            });
+            chatBody.appendChild(optionsDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function handleOptionSelection(userText, actionType, step, parentCategory) {
+            const currentOptions = document.getElementById('current-options');
+            if (currentOptions) currentOptions.remove();
+
+            addMessageToChat('user-message', userText);
+
+            const typingMsg = document.createElement('div');
+            typingMsg.classList.add('bot-message');
+            typingMsg.textContent = "Typing...";
+            chatBody.appendChild(typingMsg);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            setTimeout(() => {
+                chatBody.removeChild(typingMsg);
+                
+                if (step === 1) {
+                    const categoryData = deepDiveData[actionType];
+                    
+                    addMessageToChat('bot-message', `Great! Jay has built several solutions using ${categoryData.title}. Which of these real-world examples interests you the most?`);
+
+                    setTimeout(() => {
+                        const nextOptions = categoryData.examples.map(ex => ({
+                            text: ex.title,
+                            action: "connect",
+                            step: 2,
+                            parentCategory: categoryData.title
+                        }));
+                        showOptions(nextOptions);
+                    }, 500);
+                } else if (step === 2) {
+                    addMessageToChat('bot-message', `Excellent choice! Let's connect you directly with Jay to discuss building it.`);
+
+                    setTimeout(() => {
+                        const waText = encodeURIComponent(`Hi Jay, I am interested in your ${parentCategory} services, specifically building: ${userText}`);
+                        const waLink = `https://wa.me/9137435654?text=${waText}`;
+
+                        const waBtnDiv = document.createElement('div');
+                        waBtnDiv.className = 'chat-options';
+                        waBtnDiv.innerHTML = `<a href="${waLink}" target="_blank" class="chat-opt-btn" style="background:#fff; color:#000; font-weight:bold; text-align:center; display:block; width: 100%; border:none;"><i class="fab fa-whatsapp"></i> Chat with Jay</a>`;
+                        chatBody.appendChild(waBtnDiv);
+                        chatBody.scrollTop = chatBody.scrollHeight;
+                    }, 800);
+                }
+
+            }, 1000);
+        }
+
+        sendBtn.addEventListener('click', handleManualMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleManualMessage();
+        });
+
+        function handleManualMessage() {
+            const text = chatInput.value.trim();
+            if (text === "") return;
+            addMessageToChat('user-message', text);
+            chatInput.value = '';
+            
+            setTimeout(() => {
+                addMessageToChat('bot-message', "I'm a guided assistant right now! Please select an option above or click the WhatsApp link to chat directly with Jay.");
+            }, 500);
+        }
+
+        function addMessageToChat(className, messageText) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add(className);
+            msgDiv.textContent = messageText;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        /* ===== APPLE SMOOTH SCROLL ===== */
+        const lenis = new Lenis({ duration: 1.2, smooth: true });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        /* ===== CARD 3D TILT ===== */
+        VanillaTilt.init(document.querySelectorAll(".service-card, .project-card"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.1
+        });
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        AOS.init({ duration: 800, once: true });
     </script>
 </body>
 </html>
