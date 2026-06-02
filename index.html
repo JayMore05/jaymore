@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jay More | Software Engineer & Consultant</title>
+    
+    <title>Jay More | Software Engineer | Universal SkillTech University</title>
+    <meta name="title" content="Jay More | Software Engineer Portfolio">
+    <meta name="description" content="Computer Science Engineering student at Universal SkillTech University. Specialized in Java, Data Structures, and Software Development.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaymore.vercel.app/">
+    <meta property="og:title" content="Jay More | Software Engineer Portfolio">
+    <meta property="og:description" content="Explore my projects in E-commerce, AI, and Software Engineering.">
+    <meta property="og:image" content="https://jaymore.vercel.app/assests/images/portfolio-preview.jpg">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
@@ -50,19 +60,10 @@
         }
         
         /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
         /* Glassmorphism */
         .glass {
@@ -94,24 +95,12 @@
         }
 
         /* Cursor blink */
-        .cursor-blink {
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+        .cursor-blink { animation: blink 1s step-end infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* Reveal Animation Classes */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* Canvas positioning */
         #canvas-container {
@@ -127,12 +116,10 @@
 </head>
 <body class="antialiased selection:bg-primary selection:text-white">
 
-    <!-- Background Animation Canvas -->
     <div id="canvas-container">
         <canvas id="networkCanvas"></canvas>
     </div>
 
-    <!-- Navigation -->
     <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
@@ -150,7 +137,6 @@
                         <a href="#contact" class="bg-primary/10 text-primary border border-primary/50 hover:bg-primary hover:text-white transition-all px-4 py-2 rounded-full text-sm font-medium">Let's Talk</a>
                     </div>
                 </div>
-                <!-- Mobile menu button -->
                 <div class="-mr-2 flex md:hidden">
                     <button type="button" onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
                         <i class="fas fa-bars text-xl"></i>
@@ -158,7 +144,6 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
         <div class="md:hidden hidden glass border-t border-gray-800" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#about" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
@@ -170,9 +155,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Decorative blobs -->
         <div class="absolute top-0 -left-4 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
         <div class="absolute top-0 -right-4 w-72 h-72 bg-cyan-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
         <div class="absolute -bottom-8 left-20 w-72 h-72 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
@@ -197,18 +180,17 @@
                 </a>
             </div>
             
-            <!-- Stats -->
             <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-gray-800 pt-8">
                 <div>
+                    <div class="text-3xl font-bold text-white">4th</div>
+                    <div class="text-sm text-gray-500 mt-1">Semester CSE</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-white">7.06</div>
+                    <div class="text-sm text-gray-500 mt-1">Current CGPA</div>
+                </div>
+                <div>
                     <div class="text-3xl font-bold text-white">3+</div>
-                    <div class="text-sm text-gray-500 mt-1">Years Coding</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-white">10+</div>
-                    <div class="text-sm text-gray-500 mt-1">Projects</div>
-                </div>
-                <div>
-                    <div class="text-3xl font-bold text-white">5+</div>
                     <div class="text-sm text-gray-500 mt-1">Certifications</div>
                 </div>
                 <div>
@@ -225,7 +207,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="py-24 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -237,7 +218,7 @@
                         Detail-oriented B.Tech Computer Science Engineering student with a strong interest in consulting, problem-solving, and data-driven decision making. I specialize in bridging the gap between complex technical architectures and business value.
                     </p>
                     <p class="text-gray-400 text-lg leading-relaxed mb-8">
-                        Currently seeking an internship opportunity to support consulting projects and contribute to building robust digital ecosystems.
+                        Currently seeking an internship opportunity to support consulting projects through research, analysis, documentation, and collaborative teamwork while gaining exposure to real-world business challenges.
                     </p>
                     
                     <div class="space-y-4">
@@ -247,16 +228,16 @@
                             </div>
                             <div>
                                 <div class="font-semibold text-white">Universal SkillTech University</div>
-                                <div class="text-sm text-gray-500">B.Tech CSE (2024 - 2028) | 2nd Year</div>
+                                <div class="text-sm text-gray-500">B.Tech CSE (2024 - 2028) | 2nd Year (4th Sem)</div>
                             </div>
                         </div>
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
-                                <i class="fas fa-star text-xl"></i>
+                                <i class="fas fa-map-marker-alt text-xl"></i>
                             </div>
                             <div>
-                                <div class="font-semibold text-white">Current CGPA</div>
-                                <div class="text-sm text-gray-500">7.06 / 10.0</div>
+                                <div class="font-semibold text-white">Location</div>
+                                <div class="text-sm text-gray-500">Mumbai, Maharashtra</div>
                             </div>
                         </div>
                     </div>
@@ -265,7 +246,7 @@
                 <div class="relative reveal delay-200">
                     <div class="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-2xl opacity-20 transform rotate-3"></div>
                     <div class="relative glass-card p-8 rounded-2xl">
-                        <h3 class="text-xl font-bold mb-6 text-white">Certifications</h3>
+                        <h3 class="text-xl font-bold mb-6 text-white">Certifications & Strengths</h3>
                         <div class="space-y-4">
                             <div class="flex items-center justify-between p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors cursor-default group">
                                 <div class="flex items-center gap-4">
@@ -304,7 +285,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="py-24 bg-darker/50 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -313,21 +293,19 @@
             </div>
 
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Service 1 -->
                 <div class="glass-card p-6 rounded-xl reveal">
                     <div class="w-12 h-12 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mb-4">
-                        <i class="fas fa-layer-group text-xl"></i>
+                        <i class="fas fa-code text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Full-Stack Dev</h3>
                     <p class="text-gray-400 text-sm mb-4">Custom REST APIs, responsive UI/UX, and robust SQL/NoSQL databases.</p>
                     <div class="flex flex-wrap gap-2">
+                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Python</span>
+                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">C</span>
                         <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">React</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">Node.js</span>
-                        <span class="px-2 py-1 text-xs rounded bg-white/5 text-gray-300">SQL</span>
                     </div>
                 </div>
 
-                <!-- Service 2 -->
                 <div class="glass-card p-6 rounded-xl reveal delay-100">
                     <div class="w-12 h-12 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400 mb-4">
                         <i class="fas fa-cloud text-xl"></i>
@@ -340,7 +318,6 @@
                     </div>
                 </div>
 
-                <!-- Service 3 -->
                 <div class="glass-card p-6 rounded-xl reveal delay-200">
                     <div class="w-12 h-12 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-4">
                         <i class="fas fa-shopping-cart text-xl"></i>
@@ -353,7 +330,6 @@
                     </div>
                 </div>
 
-                <!-- Service 4 -->
                 <div class="glass-card p-6 rounded-xl reveal">
                     <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center text-pink-400 mb-4">
                         <i class="fas fa-robot text-xl"></i>
@@ -366,10 +342,9 @@
                     </div>
                 </div>
 
-                <!-- Service 5 -->
                 <div class="glass-card p-6 rounded-xl reveal delay-100">
                     <div class="w-12 h-12 rounded-lg bg-red-500/20 flex items-center justify-center text-red-400 mb-4">
-                        <i class="fas fa-lock text-xl"></i>
+                        <i class="fas fa-shield-alt text-xl"></i>
                     </div>
                     <h3 class="text-xl font-bold text-white mb-2">Cybersecurity</h3>
                     <p class="text-gray-400 text-sm mb-4">OWASP Top 10 prevention, data encryption, and JWT secure endpoints.</p>
@@ -379,8 +354,7 @@
                     </div>
                 </div>
 
-                <!-- Service 6 -->
-                <div class="glass-card p-6 rounded-xl reveal delay-200 flex flex-col justify-center items-center text-center border-dashed border-2 border-gray-700 hover:border-primary/50">
+                <div class="glass-card p-6 rounded-xl reveal delay-200 flex flex-col justify-center items-center text-center border-dashed border-2 border-gray-700 hover:border-primary/50 cursor-pointer" onclick="window.location.href='#contact'">
                     <div class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-gray-400 mb-4 group-hover:bg-primary/20">
                         <i class="fas fa-plus text-xl"></i>
                     </div>
@@ -391,7 +365,6 @@
         </div>
     </section>
 
-    <!-- Interactive Goal Builder -->
     <section class="py-20 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent"></div>
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -402,39 +375,37 @@
 
             <div class="glass p-8 rounded-2xl reveal">
                 <div class="grid md:grid-cols-3 gap-4 mb-8">
-                    <button onclick="showGoal('saas')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group active-goal" id="btn-saas">
+                    <button onclick="showGoal('hotel')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group active-goal" id="btn-hotel">
                         <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-chart-line text-primary text-xl"></i>
+                            <i class="fas fa-utensils text-primary text-xl"></i>
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-primary transition-colors"></i>
                         </div>
-                        <div class="font-semibold text-white">SaaS Architecture</div>
+                        <div class="font-semibold text-white">Hotel & Shop Dashboard</div>
                     </button>
                     
-                    <button onclick="showGoal('dashboard')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-dashboard">
+                    <button onclick="showGoal('ecommerce')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-ecommerce">
                         <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-th-large text-secondary text-xl"></i>
+                            <i class="fas fa-shopping-bag text-secondary text-xl"></i>
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-secondary transition-colors"></i>
                         </div>
-                        <div class="font-semibold text-white">Business Dashboard</div>
+                        <div class="font-semibold text-white">E-Commerce Ecosystem</div>
                     </button>
 
-                    <button onclick="showGoal('security')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-security">
+                    <button onclick="showGoal('ai')" class="goal-btn p-4 rounded-xl bg-white/5 hover:bg-primary/20 border border-transparent hover:border-primary/50 transition-all text-left group" id="btn-ai">
                         <div class="flex items-center justify-between mb-2">
-                            <i class="fas fa-shield-alt text-emerald-400 text-xl"></i>
+                            <i class="fas fa-robot text-emerald-400 text-xl"></i>
                             <i class="fas fa-chevron-right text-gray-600 group-hover:text-emerald-400 transition-colors"></i>
                         </div>
-                        <div class="font-semibold text-white">Security Audit</div>
+                        <div class="font-semibold text-white">Automated AI Agents</div>
                     </button>
                 </div>
 
                 <div id="goal-content" class="bg-black/20 rounded-xl p-6 border border-white/5 min-h-[160px] transition-all duration-500">
-                    <!-- Content injected via JS -->
-                </div>
+                    </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="py-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 reveal">
@@ -442,50 +413,48 @@
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="text-gradient">Projects</span></h2>
                     <p class="text-gray-400">Selected works showcasing architecture and design.</p>
                 </div>
-                <a href="#" class="hidden md:inline-flex items-center text-primary hover:text-white transition-colors mt-4 md:mt-0">
+                <a href="https://github.com/JayMore05" target="_blank" class="hidden md:inline-flex items-center text-primary hover:text-white transition-colors mt-4 md:mt-0">
                     View Github <i class="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
 
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 -->
                 <div class="group relative rounded-2xl overflow-hidden reveal">
                     <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/80 to-transparent z-10"></div>
-                    <!-- Placeholder for project image -->
-                    <div class="h-80 w-full bg-gray-800 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-600">
+                    <div class="h-80 w-full bg-gray-900 relative">
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-700">
                             <i class="fas fa-robot text-6xl opacity-20 group-hover:scale-110 transition-transform duration-700"></i>
                         </div>
                         <div class="absolute top-4 right-4 z-20 flex gap-2">
                             <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-primary border border-primary/20">React</span>
                             <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-secondary border border-secondary/20">Node.js</span>
+                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-emerald-400 border border-emerald-400/20">AI API</span>
                         </div>
                     </div>
                     <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
                         <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">AI-Powered SaaS Dashboard</h3>
-                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Analytics dashboard integrating OpenAI's API for intelligent data insights and automated reporting.</p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
-                            View Case Study <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-2">Analytics dashboard integrating OpenAI's API for intelligent data insights and automated reporting workflows.</p>
+                        <a href="https://github.com/JayMore05" target="_blank" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
+                            View Project <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project 2 -->
                 <div class="group relative rounded-2xl overflow-hidden reveal delay-100">
                     <div class="absolute inset-0 bg-gradient-to-t from-darker via-darker/80 to-transparent z-10"></div>
-                    <div class="h-80 w-full bg-gray-800 relative">
-                        <div class="absolute inset-0 flex items-center justify-center text-gray-600">
+                    <div class="h-80 w-full bg-gray-900 relative">
+                        <div class="absolute inset-0 flex items-center justify-center text-gray-700">
                             <i class="fas fa-utensils text-6xl opacity-20 group-hover:scale-110 transition-transform duration-700"></i>
                         </div>
                         <div class="absolute top-4 right-4 z-20 flex gap-2">
-                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-accent border border-accent/20">Full-Stack</span>
+                            <span class="px-3 py-1 rounded-full bg-black/50 backdrop-blur text-xs font-mono text-accent border border-accent/20">Full-Stack SaaS</span>
                         </div>
                     </div>
                     <div class="absolute bottom-0 left-0 p-8 z-20 w-full">
                         <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-primary transition-colors">Restaurant Management System</h3>
                         <p class="text-gray-400 text-sm mb-4 line-clamp-2">Custom software where waiters take orders on tablets, kitchens get instant tickets, and owners track profits securely from mobile.</p>
-                        <a href="#" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
-                            View Case Study <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
+                        <a href="https://github.com/JayMore05" target="_blank" class="inline-flex items-center text-sm font-semibold text-white hover:text-primary transition-colors">
+                            View Project <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform"></i>
                         </a>
                     </div>
                 </div>
@@ -493,7 +462,6 @@
         </div>
     </section>
 
-    <!-- Blog Section -->
     <section id="blog" class="py-24 bg-darker/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 reveal">
@@ -502,9 +470,8 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Article 1 -->
                 <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal">
-                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-900/50 to-purple-900/50 group-hover:scale-110 transition-transform duration-500"></div>
                         <div class="absolute bottom-4 left-4">
                             <span class="px-2 py-1 bg-primary/20 text-primary text-xs font-bold rounded uppercase tracking-wider">Architecture</span>
@@ -520,9 +487,8 @@
                     </div>
                 </article>
 
-                <!-- Article 2 -->
                 <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal delay-100">
-                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-red-900/50 to-orange-900/50 group-hover:scale-110 transition-transform duration-500"></div>
                         <div class="absolute bottom-4 left-4">
                             <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs font-bold rounded uppercase tracking-wider">Security</span>
@@ -538,9 +504,8 @@
                     </div>
                 </article>
 
-                <!-- Article 3 -->
                 <article class="glass-card rounded-xl overflow-hidden group cursor-pointer reveal delay-200">
-                    <div class="h-48 bg-gray-800 relative overflow-hidden">
+                    <div class="h-48 bg-gray-900 relative overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/50 to-teal-900/50 group-hover:scale-110 transition-transform duration-500"></div>
                         <div class="absolute bottom-4 left-4">
                             <span class="px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-bold rounded uppercase tracking-wider">AI Integration</span>
@@ -559,75 +524,76 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-24 relative">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
             <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's <span class="text-gradient">Connect</span></h2>
             <p class="text-gray-400 text-lg mb-12">Have a project in mind or want to discuss consulting opportunities? Reach out.</p>
             
-            <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <a href="mailto:contact@jaymore.dev" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-primary/50">
+            <div class="grid md:grid-cols-4 gap-4 mb-12">
+                <a href="mailto:jaymore2156@gmail.com" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-primary/50">
                     <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
                         <i class="fas fa-envelope text-xl"></i>
                     </div>
-                    <div class="font-medium text-white">Email</div>
-                    <div class="text-sm text-gray-500 mt-1">contact@jaymore.dev</div>
+                    <div class="font-medium text-white text-sm">Email</div>
                 </a>
                 
-                <a href="#" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-primary/50">
+                <a href="https://wa.me/9137435654" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-accent/50">
+                    <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </div>
+                    <div class="font-medium text-white text-sm">WhatsApp</div>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-secondary/50">
                     <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center text-secondary mb-4 group-hover:scale-110 transition-transform">
                         <i class="fab fa-linkedin text-xl"></i>
                     </div>
-                    <div class="font-medium text-white">LinkedIn</div>
-                    <div class="text-sm text-gray-500 mt-1">Jay More</div>
+                    <div class="font-medium text-white text-sm">LinkedIn</div>
                 </a>
 
-                <a href="#" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-primary/50">
-                    <div class="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-4 group-hover:scale-110 transition-transform">
+                <a href="https://github.com/JayMore05" target="_blank" class="glass-card p-6 rounded-xl flex flex-col items-center group hover:border-gray-400/50">
+                    <div class="w-12 h-12 rounded-full bg-gray-500/10 flex items-center justify-center text-gray-300 mb-4 group-hover:scale-110 transition-transform">
                         <i class="fab fa-github text-xl"></i>
                     </div>
-                    <div class="font-medium text-white">Github</div>
-                    <div class="text-sm text-gray-500 mt-1">@jaymore</div>
+                    <div class="font-medium text-white text-sm">GitHub</div>
                 </a>
             </div>
 
             <div class="glass p-8 rounded-2xl text-left max-w-2xl mx-auto">
-                <form onsubmit="event.preventDefault(); alert('Message sent! (Demo only)');" class="space-y-4">
+                <form action="mailto:jaymore2156@gmail.com" method="post" enctype="text/plain" class="space-y-4">
                     <div class="grid md:grid-cols-2 gap-4">
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-1">Name</label>
-                            <input type="text" class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="John Doe">
+                            <input type="text" name="name" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="John Doe">
                         </div>
                         <div>
                             <label class="block text-sm font-medium text-gray-400 mb-1">Email</label>
-                            <input type="email" class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="john@example.com">
+                            <input type="email" name="email" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="john@example.com">
                         </div>
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-400 mb-1">Message</label>
-                        <textarea rows="4" class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Tell me about your project..."></textarea>
+                        <textarea name="message" rows="4" required class="w-full bg-black/20 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" placeholder="Tell me about your project..."></textarea>
                     </div>
                     <button type="submit" class="w-full bg-gradient-to-r from-primary to-secondary text-white font-bold py-3 rounded-lg hover:shadow-lg hover:shadow-primary/25 transition-all transform hover:-translate-y-1">
-                        Send Message
+                        Send via Email Client
                     </button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="border-t border-gray-800 py-8 bg-darker">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
             <div class="font-mono text-xl font-bold text-white mb-4 md:mb-0">
                 &lt;JayMore /&gt;
             </div>
             <div class="text-gray-500 text-sm">
-                 Jay More. All rights reserved.
+                &copy; 2026 Jay More. Architected in Mumbai. All rights reserved.
             </div>
             <div class="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+                <a href="https://github.com/JayMore05" target="_blank" aria-label="GitHub Profile" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jaymore05" target="_blank" aria-label="LinkedIn Profile" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </footer>
@@ -647,7 +613,7 @@
                 heading.innerText = word.substring(0, currentTxt.length + 1);
                 if (heading.innerText === word) {
                     heading.classList.add("deleting");
-                    setTimeout(typeWriter, 2000); // Wait before deleting
+                    setTimeout(typeWriter, 2000); 
                     return;
                 }
             } else {
@@ -659,31 +625,28 @@
             }
             setTimeout(typeWriter, heading.classList.contains("deleting") ? 50 : 100);
         }
-        
-        // Start typewriter
         setTimeout(typeWriter, 1000);
 
         // --- Interactive Goal Builder ---
         const goals = {
-            saas: {
-                title: "SaaS Architecture",
-                desc: "I build multi-tenant systems designed for scale. From subscription billing logic (Stripe/Razorpay) to role-based access control (RBAC), I ensure your software can onboard thousands of users securely.",
-                features: ["Multi-tenancy", "Tiered Billing", "RBAC", "API Rate Limiting"]
+            hotel: {
+                title: "Custom Business Management Dashboards",
+                desc: "Stop calculating bills on paper. I build custom software where your waiters can take orders on a tablet, the kitchen gets the ticket instantly, and you can see your daily profits securely from your phone.",
+                waLink: "Hi Jay, I want to build a hotel/shop management system."
             },
-            dashboard: {
-                title: "Business Management Dashboards",
-                desc: "Stop calculating bills on paper. I build custom software where your team can manage operations on a tablet, departments get instant updates, and you can see daily profits securely from your phone.",
-                features: ["Real-time Data", "Mobile Responsive", "Secure Login", "Custom Reports"]
+            ecommerce: {
+                title: "High-Conversion Online Stores",
+                desc: "Sell your physical or digital products 24/7. I build blazing-fast online stores complete with size selections, shopping carts, secure payment gateways, and automated email receipts.",
+                waLink: "Hi Jay, I want to build an online store."
             },
-            security: {
-                title: "Cybersecurity & Audits",
-                desc: "Protecting your application from day one. I implement OWASP Top 10 prevention strategies, secure JWT endpoints, and data encryption to keep your business and customer data safe.",
-                features: ["OWASP Prevention", "Data Encryption", "JWT Auth", "Vulnerability Scanning"]
+            ai: {
+                title: "Automated AI Customer Support",
+                desc: "Train an AI on your company's rules. When customers message your website at 2 AM, the AI automatically answers their questions and takes their orders.",
+                waLink: "Hi Jay, I want to integrate AI."
             }
         };
 
         function showGoal(key) {
-            // Update buttons
             document.querySelectorAll('.goal-btn').forEach(btn => {
                 btn.classList.remove('bg-primary/20', 'border-primary/50');
                 btn.classList.add('bg-white/5', 'border-transparent');
@@ -692,22 +655,20 @@
             activeBtn.classList.remove('bg-white/5', 'border-transparent');
             activeBtn.classList.add('bg-primary/20', 'border-primary/50');
 
-            // Update Content with fade effect
             const contentDiv = document.getElementById('goal-content');
             contentDiv.style.opacity = '0';
             
             setTimeout(() => {
                 const data = goals[key];
+                const waUrl = `https://wa.me/9137435654?text=${encodeURIComponent(data.waLink)}`;
+                
                 contentDiv.innerHTML = `
                     <h3 class="text-2xl font-bold text-white mb-3">${data.title}</h3>
                     <p class="text-gray-300 mb-6 leading-relaxed">${data.desc}</p>
-                    <div class="flex flex-wrap gap-3">
-                        ${data.features.map(f => `<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm border border-primary/20"><i class="fas fa-check mr-2"></i>${f}</span>`).join('')}
-                    </div>
                     <div class="mt-6">
-                        <button class="text-white font-medium hover:text-primary transition-colors flex items-center">
-                            Let's Build This <i class="fas fa-arrow-right ml-2"></i>
-                        </button>
+                        <a href="${waUrl}" target="_blank" class="text-white font-medium hover:text-primary transition-colors flex items-center w-max">
+                            Let's Build This on WhatsApp <i class="fab fa-whatsapp ml-2"></i>
+                        </a>
                     </div>
                 `;
                 contentDiv.style.opacity = '1';
@@ -715,7 +676,7 @@
         }
 
         // Initialize goal builder
-        showGoal('saas');
+        showGoal('hotel');
 
         // --- Mobile Menu ---
         function toggleMobileMenu() {
@@ -725,7 +686,6 @@
 
         // --- Scroll Reveal Animation ---
         const revealElements = document.querySelectorAll('.reveal');
-        
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -733,7 +693,6 @@
                 }
             });
         }, { threshold: 0.1 });
-
         revealElements.forEach(el => revealObserver.observe(el));
 
         // --- Navbar Scroll Effect ---
@@ -767,17 +726,14 @@
                 this.vy = (Math.random() - 0.5) * 0.5;
                 this.size = Math.random() * 2;
             }
-
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-
                 if (this.x < 0 || this.x > width) this.vx *= -1;
                 if (this.y < 0 || this.y > height) this.vy *= -1;
             }
-
             draw() {
-                ctx.fillStyle = 'rgba(14, 165, 233, 0.3)'; // Primary color low opacity
+                ctx.fillStyle = 'rgba(14, 165, 233, 0.3)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -786,7 +742,7 @@
 
         function initParticles() {
             particles = [];
-            const particleCount = Math.min(window.innerWidth / 10, 100); // Responsive count
+            const particleCount = Math.min(window.innerWidth / 10, 100);
             for (let i = 0; i < particleCount; i++) {
                 particles.push(new Particle());
             }
@@ -799,7 +755,6 @@
                 particles[i].update();
                 particles[i].draw();
                 
-                // Draw connections
                 for (let j = i; j < particles.length; j++) {
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
@@ -826,7 +781,6 @@
         resize();
         initParticles();
         animate();
-
     </script>
 </body>
 </html>
