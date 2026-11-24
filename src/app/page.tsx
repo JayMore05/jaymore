@@ -1,5 +1,5 @@
 import Link from "next/link";
-import {ArrowDownRight,ArrowUpRight,Activity,PanelsTopLeft,Workflow,Code2,Store,Stethoscope,ShoppingBag,Building2,Layers3,MoveUpRight,GraduationCap} from "lucide-react";
+import {ArrowDownRight,ArrowUpRight,Activity,PanelsTopLeft,Workflow,Code2,Store,Stethoscope,ShoppingBag,Layers3,MoveUpRight,GraduationCap} from "lucide-react";
 import Reveal from "@/components/Reveal";
 import {BrandMark} from "@/components/Brand";
 const capabilities=[{n:"01",icon:PanelsTopLeft,title:"Digital experiences",desc:"Websites and platforms that make your business easier to discover, understand and choose."},{n:"02",icon:Code2,title:"Custom software",desc:"Purpose-built applications shaped around the way your people actually work."},{n:"03",icon:Workflow,title:"Business systems",desc:"POS, CRM, inventory and operations tools that connect the moving parts."},{n:"04",icon:Layers3,title:"SaaS products",desc:"Useful software products designed to scale from a first release into a real platform."}];
