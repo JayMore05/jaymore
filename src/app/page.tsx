@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight, Code2, Layers3, Sparkles, Workflow } from "lucide-react";
 import { BrandMark } from "@/components/Brand";
 
@@ -15,10 +16,10 @@ export default function Home() {
       <div className="maintenance-glow maintenance-glow-two" aria-hidden="true" />
 
       <header className="maintenance-header">
-        <a className="maintenance-brand" href="/" aria-label="NESBYTE Technologies home">
+        <Link className="maintenance-brand" href="/" aria-label="NESBYTE Technologies home">
           <BrandMark />
           <span>NESBYTE<small>TECHNOLOGIES</small></span>
-        </a>
+        </Link>
         <span className="maintenance-status"><i /> WEBSITE IN DEVELOPMENT</span>
       </header>
 
