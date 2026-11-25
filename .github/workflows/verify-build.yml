@@ -1,7 +1,7 @@
 name: Verify Next.js build
 on:
   push:
-    branches: [main, nesbyte-redesign]
+    branches: [main, nesbyte-redesign, commerce-real-storefront]
   pull_request:
     branches: [main]
   workflow_dispatch:
