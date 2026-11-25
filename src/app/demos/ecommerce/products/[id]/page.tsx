@@ -1,1 +1,4 @@
-import {notFound} from "next/navigation";import Link from "next/link";import EcommerceDemo from "@/components/demos/EcommerceDemo";export function generateStaticParams(){return Array.from({length:8},(_,i)=>({id:String(i+1)}))}export default async function ProductPage({params}:{params:Promise<{id:string}>}){const {id}=await params;if(Number(id)<1||Number(id)>8)notFound();return <><div style={{padding:"28px",textAlign:"center"}}><Link href="/demos/ecommerce">← Back to collection</Link><p>Product detail pages are part of the storefront experience.</p></div><EcommerceDemo/></>}
+import {notFound} from "next/navigation";
+import EcommerceDemo from "@/components/demos/EcommerceDemo";
+export function generateStaticParams(){return Array.from({length:8},(_,i)=>({id:String(i+1)}))}
+export default async function ProductPage({params}:{params:Promise<{id:string}>}){const {id}=await params;if(!/^([1-8])$/.test(id))notFound();return <EcommerceDemo/>}
