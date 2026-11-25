@@ -24,9 +24,9 @@ export default function EcommerceDemo(){
  const pathname=usePathname(),router=useRouter();
  const view=pathname.endsWith("/order-confirmation")?"confirmation":pathname.endsWith("/checkout")?"checkout":pathname.endsWith("/cart")?"cart":pathname.includes("/products/")?"product":"store";\n const productId=Number(pathname.split("/").pop());\n const selectedProduct=products.find(p=>p.id===productId);
  const [cat,setCat]=useState("All"),[query,setQuery]=useState(""),[bag,setBag]=useState<Bag>({}),[address,setAddress]=useState<Address>(emptyAddress),[payment,setPayment]=useState("cod"),[coupon,setCoupon]=useState(""),[discount,setDiscount]=useState(0),[couponMsg,setCouponMsg]=useState(""),[order,setOrder]=useState<any>(null),[ready,setReady]=useState(false),[notice,setNotice]=useState("");
- useEffect(()=>{setBag(read("forme-cart",{}));setAddress(read("forme-address",emptyAddress));setOrder(read("forme-order",null));setReady(true)},[]);
+ useEffect(()=>{setBag(read("forme-cart",{}));setAddress(read("forme-address",emptyAddress));setOrder(read("forme-order",null));setCoupon(read("forme-coupon",""));setDiscount(read("forme-discount",0));setReady(true)},[]);
  useEffect(()=>{if(ready)localStorage.setItem("forme-cart",JSON.stringify(bag))},[bag,ready]);
- useEffect(()=>{if(ready)localStorage.setItem("forme-address",JSON.stringify(address))},[address,ready]);
+ useEffect(()=>{if(ready)localStorage.setItem("forme-address",JSON.stringify(address))},[address,ready]);\n useEffect(()=>{if(ready){localStorage.setItem("forme-coupon",JSON.stringify(coupon));localStorage.setItem("forme-discount",JSON.stringify(discount))}},[coupon,discount,ready]);
  const shown=useMemo(()=>products.filter(p=>(cat==="All"||p.category===cat)&&p.name.toLowerCase().includes(query.toLowerCase())),[cat,query]);
  const count=Object.values(bag).reduce((a,b)=>a+b,0),subtotal=products.reduce((s,p)=>s+p.price*(bag[p.id]||0),0),shipping=subtotal===0||subtotal>=2999?0:99,total=Math.max(0,subtotal+shipping-discount);
  const change=(id:number,d:number)=>setBag(old=>{const n={...old,[id]:Math.min(products.find(p=>p.id===id)?.stock||0,Math.max(0,(old[id]||0)+d))};if(!n[id])delete n[id];return n});
