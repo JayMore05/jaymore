@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+export const metadata:Metadata={metadataBase:new URL("https://nesbyte.in"),title:{default:"NESBYTE Technologies | Building Digital. Empowering Businesses.",template:"%s | NESBYTE Technologies"},description:"NESBYTE Technologies designs and develops websites, custom software, business management systems and SaaS products for growing businesses.",icons:{icon:"/nesbyte-symbol.svg",shortcut:"/nesbyte-symbol.svg"},openGraph:{title:"NESBYTE Technologies",description:"Digital products and software solutions built around your business.",url:"https://nesbyte.in",siteName:"NESBYTE Technologies",type:"website"},robots:{index:true,follow:true}};
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><Navbar/><main>{children}</main><Footer/></body></html>}
