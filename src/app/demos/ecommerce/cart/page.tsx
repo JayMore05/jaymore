@@ -1,0 +1,1 @@
+import EcommerceDemo from "@/components/demos/EcommerceDemo";export default function CartPage(){return <EcommerceDemo/>}
