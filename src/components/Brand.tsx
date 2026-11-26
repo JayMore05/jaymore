@@ -1,3 +1,3 @@
 import Link from "next/link";
-export function BrandMark({large=false}:{large?:boolean}){return <span className={large?"brand-mark brand-mark-large":"brand-mark"} aria-hidden="true"><svg viewBox="0 0 64 64" role="img"><path className="brand-frame" d="M32 5 54 17.5v29L32 59 10 46.5v-29L32 5Z"/><path className="brand-circuit" d="M19 39V25l13 8 13-8v14M19 25h-4m30 0h4M32 33v13"/><circle cx="15" cy="25" r="3.2"/><circle cx="49" cy="25" r="3.2"/><circle cx="32" cy="47" r="3.2"/><circle className="brand-center" cx="32" cy="33" r="4.2"/></svg></span>}
+export function BrandMark({large=false}:{large?:boolean}){return <span className={large?"brand-mark brand-mark-large":"brand-mark"}><img src="/nesbyte-logo.svg" alt="NESBYTE logo" /></span>}
 export default function Brand(){return <Link href="/" className="brand" aria-label="NESBYTE Technologies home"><BrandMark/><span className="brand-name">NESBYTE<small>TECHNOLOGIES</small></span></Link>}
