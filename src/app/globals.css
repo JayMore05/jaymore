@@ -127,5 +127,3 @@
 .maintenance-brand .brand-mark{width:54px;height:60px;flex-basis:54px}
 @media(max-width:700px){.maintenance-brand .brand-mark{width:52px;height:58px;flex-basis:52px}}
 
-/* Updated standalone NESBYTE symbol */
-.brand-mark img{mix-blend-mode:screen}
